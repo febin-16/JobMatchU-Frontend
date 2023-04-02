@@ -1,8 +1,10 @@
 import React from 'react'
-
+import JobList from '../components/JobList'
 function Home() {
   return (
-    <div className='bg-black'>Home</div>
+    <div className='w-full h-screen'>
+      <JobList/>
+    </div>
   )
 }
 
