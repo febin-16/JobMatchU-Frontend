@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Footer from '../components/Footer'
 function Home() {
   return (
-    <div className='bg-black'>Home</div>
+    <div className='w-full h-screen relative'>
+      <Footer/>
+    </div>
   )
 }
 
