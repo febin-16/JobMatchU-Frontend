@@ -7,7 +7,7 @@ import {HiOutlineClipboardList} from "react-icons/hi";
 function JobCard(){
 	const [liked,setLiked] = useState(false);
   return (
-    <div className='w-full h-auto flex flex-row'>	
+    <div className='w-full h-auto pb-2 md:pr-2 flex flex-row justify-center'>	
 		<div className="w-3/4 min-h-[300px] h-auto md:w-[400px] md:h-[300px] bg-gradient-to-r from-red-400 to-rose-400 rounded-xl p-4">
 			<div className="flex justify-between items-center py-4 ">
 				<h2 className="text-2xl font-bold text-slate-200 mr-4">Job Title</h2>
