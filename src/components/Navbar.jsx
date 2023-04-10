@@ -61,7 +61,7 @@ function Navbar(){
                   <span>Favourites</span>
                 </div>
               </Link>  
-              <Link className="my-1 text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline md:mx-4 md:my-0" to="#">Profile</Link> 
+              <Link className="my-1 text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline md:mx-4 md:my-0" to="/Profile">Profile</Link> 
             </div>
 
             <div className="flex items-center py-2 -mx-1 md:mx-0">
