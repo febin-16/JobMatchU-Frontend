@@ -149,121 +149,121 @@ function Navbar() {
           <div className="flex flex-row mt-3 -mx-3 overflow-scroll scroll-hidden">
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               News
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               Articles
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               Videos
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               Tricks
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               PHP
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               Laravel
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               Vue
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               React
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               Tailwindcss
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
-              Meraki{" "}
+              Meraki
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               CPP
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               JavaScript
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               Ruby
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               Mysql
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               Pest
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               PHPUnit
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               Netlify
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               VS Code
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               PHPStorm
             </Link>
             <Link
               className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="#"
+              to="/Category"
             >
               Sublime
             </Link>
