@@ -1,5 +1,6 @@
 import React,{useState,useContext} from 'react'
 import { Link } from 'react-router-dom'
+import Profile_Info from '../components/Profile_Info'
 import Prof_Application from '../components/Prof_Application'
 import { UserContext } from "../context/UserContextProvider";
 function Profile() {
@@ -83,7 +84,7 @@ function Profile() {
             </aside>
             {prof=="Profile" && 
                 <div className="w-full p-4">
-                    Profile
+                    <Profile_Info/>
                 </div>
             }   
             {prof=="Chat" && 
