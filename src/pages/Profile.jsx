@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
+import Profile_Info from '../components/Profile_Info'
 function Profile() {
     const [isOpen,setIsOpen]=useState(true)
     const [prof,setProf]=useState("Profile")
@@ -47,7 +48,7 @@ function Profile() {
             </aside>
             {prof=="Profile" && 
                 <div className="w-full p-4">
-                    Profile
+                    <Profile_Info/>
                 </div>
             }   
             {prof=="Chat" && 
