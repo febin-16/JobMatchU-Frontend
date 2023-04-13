@@ -1,5 +1,6 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import React,{useState,useContext} from 'react'
+import { Link } from 'react-router-dom'
+import Prof_Application from '../components/Prof_Application'
 import { UserContext } from "../context/UserContextProvider";
 function Profile() {
   const [isOpen, setIsOpen] = useState(true);
@@ -75,24 +76,37 @@ function Profile() {
             <span>My Favourites</span>
           </Link>
 
-          <Link
-            onClick={() => setProf("Profile")}
-            className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600"
-          >
-            <span className="text-2xl">
-              <i className="bx bx-user"></i>
-            </span>
-            <span>Profile</span>
-          </Link>
-        </aside>
-        {prof == "Profile" && <div className="w-full p-4">Profile</div>}
-        {prof == "Chat" && <div className="w-full p-4">Chat</div>}
-        {prof == "Dashboard" && <div className="w-full p-4">Dashboard</div>}
-        {prof == "Applications" && (
-          <div className="w-full p-4">Application</div>
-        )}
-        {prof == "Favourites" && <div className="w-full p-4">Favourites</div>}
-      </div>
+                <Link onClick={()=>setProf("Profile")}  className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
+                    <span className="text-2xl"><i className="bx bx-user"></i></span>
+                    <span>Profile</span>
+                </Link>
+            </aside>
+            {prof=="Profile" && 
+                <div className="w-full p-4">
+                    Profile
+                </div>
+            }   
+            {prof=="Chat" && 
+                <div className="w-full p-4">
+                    Chat
+                </div>
+            }  
+            {prof=="Dashboard" && 
+                <div className="w-full p-4">
+                    Dashboard
+                </div>
+            }  
+             {prof=="Applications" && 
+                <div className={`${isOpen ? "hidden":"block"} w-full  md:block`} >
+                    <Prof_Application/>
+                </div>
+            }
+            {prof=="Favourites" && 
+                <div className="w-full p-4">
+                    Favourites
+                </div>
+            }   
+            </div>
     </main>
   );
 }
