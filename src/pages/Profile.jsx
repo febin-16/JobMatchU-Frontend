@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
+import Prof_Application from '../components/Prof_Application'
 function Profile() {
     const [isOpen,setIsOpen]=useState(true)
     const [prof,setProf]=useState("Profile")
@@ -18,7 +19,7 @@ function Profile() {
         </header>
 
         <div className="flex">
-            <aside className={`h-screen flex w-72  flex-col space-y-2 border-r-2 border-gray-200 bg-white p-2 ${isOpen?'block':'hidden'} md:block`} 
+            <aside className={`h-screen flex w-72  flex-col space-y-2 border-r-2 border-gray-200 bg-white p-2 ${isOpen?'block':'hidden'} `} 
                 x-show="asideOpen">
                 <Link onClick={()=>setProf("Dashboard")}  className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
                     <span className="text-2xl"><i className="bx bx-home"></i></span>
@@ -61,8 +62,8 @@ function Profile() {
                 </div>
             }  
              {prof=="Applications" && 
-                <div className="w-full p-4">
-                    Application
+                <div className={`${isOpen ? "hidden":"block"} w-full  md:block`} >
+                    <Prof_Application/>
                 </div>
             }
             {prof=="Favourites" && 
