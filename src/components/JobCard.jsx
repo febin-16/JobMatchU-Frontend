@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import { BiMoney } from "react-icons/bi";
 import {BsBriefcaseFill} from "react-icons/bs";
-import {FcLikePlaceholder, FcLike} from "react-icons/fc";
+import {FcLike} from "react-icons/fc";
 import {HiOutlineClipboardList} from "react-icons/hi";
+import {AiOutlineHeart} from "react-icons/ai";
 
 // bg-gradient-to-r from-gray-400 to-gray-500
 // bg-zinc-400 bg-blend-color
@@ -16,7 +17,7 @@ function JobCard(){
 			<div className="flex justify-between items-center py-4 ">
 				<h2 className="text-2xl font-bold text-gray-900 mr-4">Job Title</h2>
 				<button className='' onClick={() => setLiked(!liked)}>
-					{liked ? <FcLike className='w-10 h-10 '/> : <FcLikePlaceholder className='w-10 h-10 hover:animate-pulse '/>}
+					{liked ? <FcLike className='w-10 h-10 '/> : <AiOutlineHeart className='w-10 h-10 hover:animate-pulse '/>}
 				</button>
 			</div>
 			<div className=''>

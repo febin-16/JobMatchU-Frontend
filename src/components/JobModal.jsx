@@ -1,10 +1,11 @@
 import React,{useState, useContext, useEffect} from 'react'
 import { ModalContext } from '../context/ModalContextProvider';
 import {Link,useLocation} from 'react-router-dom';
-import {FcLikePlaceholder, FcLike} from "react-icons/fc";
+import { FcLike} from "react-icons/fc";
 import { BiMoney,BiUserPlus } from "react-icons/bi";
 import {BsBriefcaseFill} from "react-icons/bs";
 import {HiOutlineClipboardList} from "react-icons/hi";
+import {AiOutlineHeart} from "react-icons/ai";
 
 function JobModal(){
   const [liked,setLiked] = useState(false);
@@ -24,7 +25,7 @@ function JobModal(){
 			<div className="relative w-auto md:w-3/4 my-6 mx-auto max-w-5xl">
 				{/*content*/}
 				<div className="border-0 rounded-xl shadow-xl relative flex flex-col w-full bg-gray-300 outline-none focus:outline-none overflow-y-scroll  scroll-hidden" style={{ maxHeight: '80vh'}}>
-					<div className="ml-8 relative p-6 flex-auto">
+					<div className="relative  pl-6 py-5 md:p-6 flex-auto md:ml-8">
 						<div className='w-auto flex flex-col'>
 							<div className='flex flex-row justify-between items-center py-2'>
 								<h1 className='font-bold font-sans text-3xl'>Job Title</h1>
@@ -33,7 +34,7 @@ function JobModal(){
 									Apply Now
 									</button>
 									<button className='place-self-center px-2' onClick={() => setLiked(!liked)}>
-									{liked ? <FcLike className='w-12 h-12 '/> : <FcLikePlaceholder className='w-12 h-12 hover:animate-pulse '/>}
+									{liked ? <FcLike className='w-12 h-12 '/> : <AiOutlineHeart className='w-12 h-12 hover:animate-pulse '/>}
 									</button> 
 								</div>     
 							</div>
