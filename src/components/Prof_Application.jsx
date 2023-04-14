@@ -23,8 +23,6 @@ const rows = [
 const Prof_Application = () => {
   return (
     <div>
-        <br />
-        <br />
         <TableContainer component={Paper}>
       <Table sx={{ minWidth: 50 }} aria-label="simple table">
         <TableHead>
