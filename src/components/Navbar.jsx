@@ -8,12 +8,14 @@ import { BASE_URL } from "../constants/urls";
 import { UserContext } from "../context/UserContextProvider";
 import { CategoryContext } from "../context/CategoryContextProvider";
 import { getCategoryDetails } from "../api/GetCategoryDetails";
+import { useNavigate } from "react-router-dom";
 const CLIENT_ID = config.googleClientId;
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [tempuser, setTempUser] = useState(null);
   const {user,setUser} = useContext(UserContext)
   const {category,setCategory} = useContext(CategoryContext)
+  let navigate = useNavigate();
 
   useEffect(()=>{
     const username = localStorage.getItem("username");
@@ -183,7 +185,7 @@ function Navbar() {
               return(
                 <Link
                  className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-                 to="/Category"
+                 to={`/Category/${c.id}`}
                  key={c.id}
                 >
                     {c.name}

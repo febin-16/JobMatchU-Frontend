@@ -21,7 +21,7 @@ function App() {
                 <Routes>
                   <Route path={"/"} element={<Home/>} exact />
                   <Route path={"/Profile"} element={<Profile/>} exact />
-                  <Route path={"/Category"} element={<Category/>} exact />
+                  <Route path={"/Category/:category_id"} element={<Category/>} exact />
                   <Route path={"/JobList/JobModal"} element={<JobModal/>} exact />
                   <Route path={"/Category/JobModal"} element={<JobModal/>} exact />                
                 </Routes>
