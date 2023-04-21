@@ -2,10 +2,12 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
 import Category from "./pages/Category";
-import JobModal from "./components/JobModal";
+import Favourites from "./pages/Favourites";
 import { UserContextProvider } from "./context/UserContextProvider";
 import { ModalContextProvider } from "./context/ModalContextProvider";
 import { CategoryContextProvider } from "./context/CategoryContextProvider";
+import { JobContextProvider } from "./context/JobContextProvider";
+import { ModalDataContextProvider } from "./context/ModalDataContextProvider";
 import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
 import './App.css'
 
@@ -15,18 +17,21 @@ function App() {
       <BrowserRouter>
         <UserContextProvider>
           <ModalContextProvider>
-            <CategoryContextProvider>
-              <div>
-                  <Navbar/>
-                <Routes>
-                  <Route path={"/"} element={<Home/>} exact />
-                  <Route path={"/Profile"} element={<Profile/>} exact />
-                  <Route path={"/Category/:category_id"} element={<Category/>} exact />
-                  <Route path={"/JobList/JobModal"} element={<JobModal/>} exact />
-                  <Route path={"/Category/JobModal"} element={<JobModal/>} exact />                
-                </Routes>
-              </div>
-            </CategoryContextProvider>
+            <ModalDataContextProvider>
+              <CategoryContextProvider>
+                <JobContextProvider>
+                  <div>
+                      <Navbar/>
+                    <Routes>
+                      <Route path={"/"} element={<Home/>} exact />
+                      <Route path={"/Profile"} element={<Profile/>} exact />
+                      <Route path={"/Category/:category_id"} element={<Category/>} exact />        
+                      <Route path={"/Favourites"} element={<Favourites/>} exact />        
+                    </Routes>
+                  </div>
+                </JobContextProvider>
+              </CategoryContextProvider>
+            </ModalDataContextProvider>  
           </ModalContextProvider>
         </UserContextProvider>
       </BrowserRouter>

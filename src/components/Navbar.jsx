@@ -119,7 +119,7 @@ function Navbar() {
                 </Link>
                 <Link
                   className="my-1 text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline md:mx-4 md:my-0"
-                  to="/kn"
+                  to="/Favourites"
                 >
                   <div className="flex flex-row">
                     <svg

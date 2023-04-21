@@ -73,7 +73,6 @@ function Category() {
           <div>Filter</div>
         </div>
       </header>
-
       <div className="w-full flex">
         <aside
           className={`h-screen flex w-72  flex-col space-y-2 border-r-2 border-gray-200 bg-white p-2 ${

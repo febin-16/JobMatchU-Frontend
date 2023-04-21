@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Profile_Info from '../components/Profile_Info'
 import Prof_Application from '../components/Prof_Application'
 import { UserContext } from "../context/UserContextProvider";
+import Favourites from './Favourites';
 function Profile() {
   const [isOpen, setIsOpen] = useState(true);
   const [prof, setProf] = useState("Profile");
@@ -103,9 +104,7 @@ function Profile() {
                 </div>
             }
             {prof=="Favourites" && 
-                <div className="w-full p-4">
-                    Favourites
-                </div>
+                <Favourites/>
             }   
             </div>
     </main>
