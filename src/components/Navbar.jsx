@@ -6,12 +6,36 @@ import axios from "axios";
 import config from "../config";
 import { BASE_URL } from "../constants/urls";
 import { UserContext } from "../context/UserContextProvider";
+import { CategoryContext } from "../context/CategoryContextProvider";
+import { getCategoryDetails } from "../api/GetCategoryDetails";
 const CLIENT_ID = config.googleClientId;
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [tempuser, setTempUser] = useState(null);
   const {user,setUser} = useContext(UserContext)
+  const {category,setCategory} = useContext(CategoryContext)
 
+  useEffect(()=>{
+    const username = localStorage.getItem("username");
+    const email = localStorage.getItem("email");
+    const image_url = localStorage.getItem("image_url");
+    const userInfo = {
+      username: username,
+      email: email,
+      image_url: image_url,
+    };
+    setUser(userInfo);
+    async function getData() {
+      try {
+        const cat = await getCategoryDetails();
+        setCategory(cat);
+      } catch (error) {
+        console.log(error);
+      }
+    }  
+    getData();
+
+  },[])
   const handleLogin = async (googleData) => {
     console.log(googleData);
     try {
@@ -19,12 +43,17 @@ function Navbar() {
         token: googleData.credential,
       });
       const data = response.data;
+      console.log(data.user.username)
       const userInfo = {
         username: data.username,
         email: data.email,
         image_url: data.image_url,
       };
       setUser(userInfo);
+      localStorage.setItem("username",data.user.username)
+      localStorage.setItem("email",data.user.email)
+      localStorage.setItem("image_url",data.user.image_url)
+      console.log(localStorage)
     } catch (error) {
       console.error(error);
     }
@@ -32,6 +61,9 @@ function Navbar() {
 
   const handleLogout = () => {
     setUser(null);
+    localStorage.removeItem("username");
+    localStorage.removeItem("email");
+    localStorage.removeItem("image_url");
   };
 
   return (
@@ -147,126 +179,17 @@ function Navbar() {
             </div>
           </div>
           <div className="flex flex-row mt-3 -mx-3 overflow-scroll scroll-hidden">
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              News
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              Articles
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              Videos
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              Tricks
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              PHP
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              Laravel
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              Vue
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              React
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              Tailwindcss
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              Meraki
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              CPP
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              JavaScript
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              Ruby
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              Mysql
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              Pest
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              PHPUnit
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              Netlify
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              VS Code
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              PHPStorm
-            </Link>
-            <Link
-              className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
-              to="/Category"
-            >
-              Sublime
-            </Link>
+            {category&&category.map((c)=>{
+              return(
+                <Link
+                 className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
+                 to="/Category"
+                 key={c.id}
+                >
+                    {c.name}
+                </Link>
+              );
+            })}
           </div>
         </nav>
       </header>
