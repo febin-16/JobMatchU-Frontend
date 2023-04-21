@@ -1,9 +1,22 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState,useContext,useEffect } from "react";
+import { useParams} from "react-router-dom";
 import JobCard from "../components/JobCard"
 import { Formik, Form, Field } from "formik";
+import { CategoryContext } from "../context/CategoryContextProvider";
 import * as Yup from "yup";
 function Category() {
+  const {category} = useContext(CategoryContext)
+  const route = useParams();
+  const [cat,setCat]=useState(null);
+  useEffect(() => {
+    const index = category.findIndex((item) => {
+      return route.category_id == item.id;
+    });
+    if (index !== -1) {
+      console.log(index);
+      setCat(category[index]);
+    }
+  }, [route]);
     const initialValues = {
         stipend: "",
         modeOfWork: [],
@@ -40,6 +53,9 @@ function Category() {
       className="min-h-screen w-full bg-gray-100 text-gray-700"
       x-data="layout"
     >
+      {cat&&<div className="py-4 text-3xl md:text-4xl font-medium flex justify-center">
+          {cat.name}
+        </div>}
       <header className="flex w-full items-center justify-between border-b-2 border-gray-200 bg-white p-2">
         <div className="flex items-center space-x-2">
           <button
