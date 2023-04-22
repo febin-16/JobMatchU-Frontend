@@ -1,9 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useNavigate} from "react-router-dom";
 import JobCard from "./JobCard";
+import { UserContext } from '../context/UserContextProvider';
 import { ModalContext } from "../context/ModalContextProvider";
 import { JobContext } from "../context/JobContextProvider";
 import { ModalDataContext } from "../context/ModalDataContextProvider";
 import { getJobDetails } from "../api/GetJobDetails";
+import { WishlistDetails } from "../api/WishlistDetails";
 import { FcLike } from "react-icons/fc";
 import { BiMoney, BiUserPlus } from "react-icons/bi";
 import { BsBriefcaseFill } from "react-icons/bs";
@@ -15,6 +18,8 @@ function JobList() {
   const { job, setJob } = useContext(JobContext);
   const {showDataModal,setShowDataModal} = useContext(ModalDataContext);
   const [liked, setLiked] = useState(false);
+  const {user} = useContext(UserContext);
+  const navigate = useNavigate();
   useEffect(() => {
     async function getJobData() {
       try {
@@ -31,6 +36,30 @@ function JobList() {
     setShowModal(true);
     console.log(j);
   };
+   async function handleWishlist(){
+  if(user==null)
+  {
+    if(liked==false)
+    {
+     try {
+       await WishlistDetails(user,1);
+       alert("Wishlisted");
+       setLiked(!liked);
+     } catch (error) {
+       alert("Wishlisting Failed");
+       console.log(error);
+     }
+    }
+    else{
+     setLiked(!liked);
+    } 
+  }
+  else
+  {
+    alert("Complete the profile to Wishlist :)");
+    navigate('/Profile');
+  }  
+  }
   return (
     <div className="h-auto w-full p-5">
       <h2 className="text-4xl md:text-5xl font-medium flex justify-center">
@@ -107,7 +136,7 @@ function JobList() {
                       </button>
                       <button
                         className="place-self-center px-2"
-                        onClick={() => setLiked(!liked)}
+                        onClick={handleWishlist}
                       >
                         {liked ? (
                           <FcLike className="w-12 h-12 " />

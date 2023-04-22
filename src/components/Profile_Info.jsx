@@ -1,32 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState ,useContext} from 'react';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import {AiOutlineCloudUpload, AiOutlineMinusCircle} from 'react-icons/ai';
 import {BsPlusCircle} from 'react-icons/bs';
-
+import { ProfileUpdate } from '../api/ProfileUpdate';
+import { UserContext } from '../context/UserContextProvider';
 
 
 function Profile_Info(){
 
     const initialValues = {
-        fname: "",
-        lname:"",
+        first_name: "",
+        last_name:"",
         dob:"",
-        email: "",
         phone_number: "",
         country:"",
         state:"",
         district:"",
         city:"",
         pincode:"",
-        education_level:"",
+        level_of_edu:"",
         field_of_study:"",
         skills:"",
         job_title:"",
-        job_desc:""
+        job_description:""
     };
 
     const [file, setFile]  = useState()
+    const {user} = useContext(UserContext)
 
     function handleFile(event){
         setFile(event.target.files[0])
@@ -60,26 +61,36 @@ function Profile_Info(){
     // }
 
     const validationSchema = Yup.object().shape({
-        fname: Yup.string().required("First name is required"),
-        lname: Yup.string().required("Last name is required"),
+        first_name: Yup.string().required("First name is required"),
+        last_name: Yup.string().required("Last name is required"),
         dob: Yup.string(),
-        email: Yup.string().email("Invalid email").required("Email is required"),
         phone_number: Yup.string().required("Phone number is required"),
         country: Yup.string(),
         state: Yup.string().required("State is required"),
         district: Yup.string().required("Speficy your distrct"),
         city: Yup.string(),
         pincode: Yup.string().required("Pincode is required"),
-        education_level: Yup.string().required("Specify your level of education"),
+        level_of_edu: Yup.string().required("Specify your level of education"),
         field_of_study: Yup.string().required("Specify your field of study"),
         skills: Yup.string(),
         job_title: Yup.string(),
-        job_desc: Yup.string()
+        job_description: Yup.string()
 
     });
 
     async function onSubmit(values, {setSubmitting, resetForm}) {
-        console.log(values);
+        //console.log(values);
+        try {
+            
+            await ProfileUpdate(user, values,1);
+            alert("Profile Updated successful");
+            //resetForm();
+          } catch (error) {
+            alert("Registration closed");
+            console.log(error);
+          } finally {
+            setSubmitting(false);
+          }
     }
 
 
@@ -102,25 +113,19 @@ function Profile_Info(){
                             <h1 className='text-2xl font-serif font-bold text-gray-500 pt-4 pb-2'>Basic Info</h1>
                             <div className='h-auto w-full flex flex-col justify-between md:flex-row'>
                                 <div className='md:w-2/5 items-start py-3 '>
-                                    <Field type="text" name="fname" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="First Name">
+                                    <Field type="text" name="first_name" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="First Name">
                                         
                                     </Field>
-                                    <ErrorMessage style={{ color: 'red' }} name="fname" component="div" />
+                                    <ErrorMessage style={{ color: 'red' }} name="first_name" component="div" />
                                 </div>
                                 <div className='md:w-2/5 items-start py-3'>
-                                    <Field type="text" name="lname" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Last Name">
+                                    <Field type="text" name="last_name" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Last Name">
                                         
                                     </Field>
-                                    <ErrorMessage style={{ color: 'red' }} name="lname" component="div" />
+                                    <ErrorMessage style={{ color: 'red' }} name="last_name" component="div" />
                                 </div>
                             </div>
                             <div className='h-auto w-full flex flex-col justify-between md:flex-row'>
-                                <div className='md:w-2/5 items-start py-3'>
-                                    <Field type="text" name="email" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Email">
-                                        
-                                    </Field>
-                                    <ErrorMessage style={{ color: 'red' }} name="email" component="div" />
-                                </div>
                                 <div className='md:w-2/5  items-start py-3'>
                                     <Field type="text" name="phone_number" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Phone Number">
                                         
@@ -171,10 +176,10 @@ function Profile_Info(){
                             <h1 className='text-2xl font-serif font-bold text-gray-500 pt-4 pb-2'>Academic Info</h1>
                             <div className='h-auto w-full flex flex-col justify-between md:flex-row'>
                                 <div className='md:w-2/5 items-start py-3 '>
-                                    <Field type="text" name="education_level" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Level of Education">
+                                    <Field type="text" name="level_of_edu" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Level of Education">
                                         
                                     </Field>
-                                    <ErrorMessage style={{ color: 'red' }} name="education_level" component="div" />
+                                    <ErrorMessage style={{ color: 'red' }} name="level_of_edu" component="div" />
                                 </div>
                                 <div className='md:w-2/5 items-start py-3'>
                                     <Field type="text" name="field_of_study" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Field of Study">
@@ -217,7 +222,7 @@ function Profile_Info(){
                             </div>
                             <div className='h-auto w-full flex flex-col justify-between md:flex-row'>
                                 <div className='w-3/4 md:w-2/5 items-start py-3'>
-                                    <Field type="text" name="job_desc" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Job Description">
+                                    <Field type="text" name="job_description" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Job Description">
                                         
                                     </Field>
                                 </div>
