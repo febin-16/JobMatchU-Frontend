@@ -3,7 +3,8 @@ import { BASE_URL } from "../constants/urls";
 export async function ProfileUpdate(user,data,value){
     if(value==1)
     {
-        data={...data,username:user.username}
+        console.log(user);
+        data={...data,username:user}
         console.log(data);
         const url=BASE_URL+`api/student/profileupdate`
         try
@@ -17,10 +18,11 @@ export async function ProfileUpdate(user,data,value){
     }
     if(value==2)
     {
-        const url=BASE_URL+`api/jobpost/`
+        console.log(user)
+        const url=BASE_URL+`api/student/profileupdate`
         try
         {
-            const response = await axios.get(url);
+            const response = await axios.get(url,{params:{"username":user}});
     
             return response.data;
     

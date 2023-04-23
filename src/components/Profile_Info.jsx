@@ -81,8 +81,10 @@ function Profile_Info(){
     async function onSubmit(values, {setSubmitting, resetForm}) {
         //console.log(values);
         try {
-            
-            await ProfileUpdate(user, values,1);
+            console.log(values);
+            const username = localStorage.getItem("username");
+            console.log(username);
+            await ProfileUpdate(username, values,1);
             alert("Profile Updated successful");
             localStorage.setItem('ProfileInfo',JSON.stringify(values))
             resetForm();
