@@ -12,12 +12,12 @@ import { BiMoney, BiUserPlus } from "react-icons/bi";
 import { BsBriefcaseFill } from "react-icons/bs";
 import { HiOutlineClipboardList } from "react-icons/hi";
 import { AiOutlineHeart } from "react-icons/ai";
+import { ProfileContext } from "../context/ProfileContextProvider";
 
 function JobList() {
   const { showModal, setShowModal } = useContext(ModalContext);
   const { job, setJob } = useContext(JobContext);
   const {showDataModal,setShowDataModal} = useContext(ModalDataContext);
-  const [liked, setLiked] = useState(false);
   const {user} = useContext(UserContext);
   const navigate = useNavigate();
   useEffect(() => {
@@ -37,22 +37,17 @@ function JobList() {
     console.log(j);
   };
    async function handleWishlist(){
-  if(user==null)
+  const profileInfo = JSON.parse(localStorage.getItem('ProfileInfo'));
+  const job_id = showDataModal.id;
+  const owner_id = showDataModal.owner
+  if(profileInfo!=null)
   {
-    if(liked==false)
-    {
      try {
-       await WishlistDetails(user,1);
-       alert("Wishlisted");
-       setLiked(!liked);
+       await WishlistDetails(job_id,owner_id,user,1);
      } catch (error) {
-       alert("Wishlisting Failed");
+       alert("Removed from wishlist");
        console.log(error);
      }
-    }
-    else{
-     setLiked(!liked);
-    } 
   }
   else
   {
@@ -137,12 +132,9 @@ function JobList() {
                       <button
                         className="place-self-center px-2"
                         onClick={handleWishlist}
-                      >
-                        {liked ? (
-                          <FcLike className="w-12 h-12 " />
-                        ) : (
+                      >                      
                           <AiOutlineHeart className="w-12 h-12 hover:animate-pulse " />
-                        )}
+                  
                       </button>
                     </div>
                     <div className="flex flex-row justify-between items-center py-2">

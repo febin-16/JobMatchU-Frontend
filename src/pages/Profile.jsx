@@ -68,16 +68,6 @@ function Profile() {
             <span>My Applications</span>
           </Link>
 
-          <Link
-            onClick={() => setProf("Favourites")}
-            className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600"
-          >
-            <span className="text-2xl">
-              <i className="bx bx-heart"></i>
-            </span>
-            <span>My Favourites</span>
-          </Link>
-
                 <Link onClick={()=>setProf("Profile")}  className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
                     <span className="text-2xl"><i className="bx bx-user"></i></span>
                     <span>Profile</span>
@@ -102,10 +92,7 @@ function Profile() {
                 <div className={`${isOpen ? "hidden":"block"} w-full  md:block`} >
                     <Prof_Application/>
                 </div>
-            }
-            {prof=="Favourites" && 
-                <Favourites/>
-            }   
+            } 
             </div>
     </main>
   );

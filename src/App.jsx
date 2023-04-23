@@ -8,6 +8,7 @@ import { ModalContextProvider } from "./context/ModalContextProvider";
 import { CategoryContextProvider } from "./context/CategoryContextProvider";
 import { JobContextProvider } from "./context/JobContextProvider";
 import { ModalDataContextProvider } from "./context/ModalDataContextProvider";
+import { ProfileContextProvider } from "./context/ProfileContextProvider";
 import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
 import './App.css'
 
@@ -20,15 +21,17 @@ function App() {
             <ModalDataContextProvider>
               <CategoryContextProvider>
                 <JobContextProvider>
-                  <div>
-                      <Navbar/>
-                    <Routes>
-                      <Route path={"/"} element={<Home/>} exact />
-                      <Route path={"/Profile"} element={<Profile/>} exact />
-                      <Route path={"/Category/:category_id"} element={<Category/>} exact />        
-                      <Route path={"/Favourites"} element={<Favourites/>} exact />        
-                    </Routes>
-                  </div>
+                  <ProfileContextProvider></ProfileContextProvider>
+                    <div>
+                        <Navbar/>
+                      <Routes>
+                        <Route path={"/"} element={<Home/>} exact />
+                        <Route path={"/Profile"} element={<Profile/>} exact />
+                        <Route path={"/Category/:category_id"} element={<Category/>} exact />        
+                        <Route path={"/Favourites"} element={<Favourites/>} exact />        
+                      </Routes>
+                    </div>
+                  <ProfileContextProvider/>  
                 </JobContextProvider>
               </CategoryContextProvider>
             </ModalDataContextProvider>  
