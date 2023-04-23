@@ -1,3 +1,4 @@
+import React,{useEffect} from "react";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
@@ -11,7 +12,6 @@ import { ModalDataContextProvider } from "./context/ModalDataContextProvider";
 import { ProfileContextProvider } from "./context/ProfileContextProvider";
 import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
 import './App.css'
-
 function App() {
   return(
     <div>  

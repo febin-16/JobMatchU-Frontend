@@ -40,7 +40,7 @@ function JobList() {
   const profileInfo = JSON.parse(localStorage.getItem('ProfileInfo'));
   const job_id = showDataModal.id;
   const owner_id = showDataModal.owner
-  if(profileInfo!=null)
+  if(profileInfo!= " ")
   {
      try {
        await WishlistDetails(job_id,owner_id,user,1);

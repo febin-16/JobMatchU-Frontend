@@ -7,6 +7,7 @@ export async function WishlistDetails(job_id,owner_id,user,value){
         const url=BASE_URL+`api/wishlist/`
         try
         {
+            
             const response = await axios.post(url,data);
             const datas = JSON.stringify(response.data)
             alert(datas);
