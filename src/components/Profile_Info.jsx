@@ -84,7 +84,8 @@ function Profile_Info(){
             
             await ProfileUpdate(user, values,1);
             alert("Profile Updated successful");
-            //resetForm();
+            localStorage.setItem('ProfileInfo',JSON.stringify(values))
+            resetForm();
           } catch (error) {
             alert("Registration closed");
             console.log(error);

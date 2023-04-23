@@ -66,6 +66,7 @@ function Navbar() {
     localStorage.removeItem("username");
     localStorage.removeItem("email");
     localStorage.removeItem("image_url");
+    localStorage.removeItem("ProfileInfo")
   };
 
   return (
