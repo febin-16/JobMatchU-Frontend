@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -6,14 +6,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { ApplyJob } from '../api/AppyJob';
 
 function createData(name, calories, fat, carbs) {
   return { name, calories, fat, carbs};
 }
 
 const rows = [
-  createData('Editor', "Zach King","California", "Approved"),
-  createData('Editor', "Zach King","California", "Approved"),
+  createData('Editor ',"California", "Approved"),
+  createData('Editor',"California", "Approved"),
 ];
 
 
@@ -21,6 +22,25 @@ const rows = [
 
 
 const Prof_Application = () => {
+  const [app,setApp] = useState([]);
+  const [booll,setBooll] = useState([]);
+  useEffect(()=>{
+    async function getApplication()
+    {
+      try{
+        const user = localStorage.getItem('username');
+        const app_list = await ApplyJob(1,user,1,2);
+        console.log(app_list);
+        setApp(app_list[0])
+        setBooll(app_list[1])
+      }
+      catch(error)
+      {
+        console.log(error);
+      }
+    }
+    getApplication();
+  },[])
   return (
     <div>
         <TableContainer component={Paper}>
@@ -28,23 +48,21 @@ const Prof_Application = () => {
         <TableHead>
           <TableRow >
             <TableCell sx={{ fontSize: '20px', fontWeight:"bold", textAlign:"center"}}>Job Title</TableCell>
-            <TableCell sx={{ fontSize: '20px', fontWeight:"bold", textAlign:"center"}}  align="right" >Company</TableCell>
             <TableCell sx={{ fontSize: '20px', fontWeight:"bold", textAlign:"center"}} align="right">Location</TableCell>
             <TableCell sx={{ fontSize: '20px', fontWeight:"bold", textAlign:"center"}} align="right">Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {app.map((row,index) => (
             <TableRow
-              key={row.name}
+              key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row" sx={{ fontSize: '16px', fontWeight:"semibold", textAlign:"center"}}>
-                {row.name}
+                {row.title}
               </TableCell>
-              <TableCell align="right" sx={{ fontSize: '16px', fontWeight:"semibold", textAlign:"center"}}>{row.calories}</TableCell>
-              <TableCell align="right" sx={{ fontSize: '16px', fontWeight:"semibold", textAlign:"center"}}>{row.fat}</TableCell>
-              <TableCell align="right" sx={{ fontSize: '16px', fontWeight:"semibold", textAlign:"center",color:"green"}}>{row.carbs}</TableCell>
+              <TableCell align="right" sx={{ fontSize: '16px', fontWeight:"semibold", textAlign:"center"}}>{row.location}</TableCell>
+              <TableCell align="right" sx={{ fontSize: '16px', fontWeight:"semibold", textAlign:"center",color:"green"}}>{booll[index].status==false?"Pending":"Approved"}</TableCell>
             </TableRow>
           ))}
         </TableBody>

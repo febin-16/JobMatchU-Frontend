@@ -18,7 +18,7 @@ export async function ApplyJob(job_id,user,message,value){
     if(value==2)
     {
         console.log(user)
-        const url=BASE_URL+`api/student/profileupdate`
+        const url=BASE_URL+`api/application/`
         try
         {
             const response = await axios.get(url,{params:{"username":user}});
