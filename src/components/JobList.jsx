@@ -1,20 +1,28 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate} from "react-router-dom";
 import JobCard from "./JobCard";
+import { ApplyJob } from "../api/AppyJob";
 import { UserContext } from '../context/UserContextProvider';
 import { ModalContext } from "../context/ModalContextProvider";
 import { JobContext } from "../context/JobContextProvider";
 import { ModalDataContext } from "../context/ModalDataContextProvider";
 import { getJobDetails } from "../api/GetJobDetails";
 import { WishlistDetails } from "../api/WishlistDetails";
-import { FcLike } from "react-icons/fc";
 import { BiMoney, BiUserPlus } from "react-icons/bi";
 import { BsBriefcaseFill } from "react-icons/bs";
 import { HiOutlineClipboardList } from "react-icons/hi";
 import { AiOutlineHeart } from "react-icons/ai";
-import { ProfileContext } from "../context/ProfileContextProvider";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 function JobList() {
+  const initialValues = {
+    message:""
+  };
+  const validationSchema = Yup.object().shape({
+    message: Yup.string().required("message is required"),
+  });
+  const [message,setMessage] = useState(false);
   const { showModal, setShowModal } = useContext(ModalContext);
   const { job, setJob } = useContext(JobContext);
   const {showDataModal,setShowDataModal} = useContext(ModalDataContext);
@@ -36,6 +44,9 @@ function JobList() {
     setShowModal(true);
     console.log(j);
   };
+  const handleApply = () => {
+    setMessage(!message);
+  };
    async function handleWishlist(){
   const profileInfo = JSON.parse(localStorage.getItem('ProfileInfo'));
   const job_id = showDataModal.id;
@@ -55,6 +66,22 @@ function JobList() {
     navigate('/Profile');
   }  
   }
+
+  async function onSubmit(values, {setSubmitting, resetForm}) {
+    const username = localStorage.getItem("username");
+    try {
+        console.log(values,username,showDataModal.id);
+        await ApplyJob(showDataModal.id,username,values,1);
+        alert("Application Successful");
+        resetForm();
+      } catch (error) {
+        alert("Application failed");
+        console.log(error);
+      } finally {
+        setSubmitting(false);
+      }
+  }
+
   return (
     <div className="h-auto w-full p-5">
       <h2 className="text-4xl md:text-5xl font-medium flex justify-center">
@@ -119,14 +146,16 @@ function JobList() {
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-full  md:w-3/4 my-6 mx-auto max-w-5xl">
               {/*content*/}
-              <div
+              {!message?<div
                 className="border-0 rounded-xl shadow-xl relative flex flex-col w-full bg-gray-300 outline-none focus:outline-none overflow-y-scroll  scroll-hidden"
                 style={{ maxHeight: "80vh" }}
               >
                 <div className="relative  pl-6 py-5 md:p-6 flex-auto md:ml-8">
                   <div className="w-auto flex flex-col">
                     <div className="flex flex-row items-center justify-end pb-2">
-                      <button className="bg-gray-900 rounded-full px-4 py-2 text-sm font-semibold text-slate-200 text-xl hover:bg-slate-600">
+                      <button className="bg-gray-900 rounded-full px-4 py-2 text-sm font-semibold text-slate-200 text-xl hover:bg-slate-600"
+                        onClick={handleApply}
+                      >
                         Apply Now
                       </button>
                       <button
@@ -205,7 +234,49 @@ function JobList() {
                     Close
                   </button>
                 </div>
+              </div>:
+              <div className="border-0 rounded-xl shadow-xl relative flex flex-col w-full bg-gray-300 outline-none focus:outline-none overflow-y-scroll  scroll-hidden" style={{ maxHeight: "80vh" }}>
+                <div className="relative  pl-6 py-5 md:p-6 flex-auto md:ml-8">
+                <div className="flex items-center justify-end p-2 rounded-b">
+                  <button
+                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button"
+                    onClick={handleApply}
+                  >
+                    Close
+                  </button>
+                </div>
+                  <div className="w-auto flex flex-col">
+                      <Formik 
+                      initialValues = {initialValues}
+                      validationSchema={validationSchema}
+                      onSubmit={onSubmit}
+                      >
+                         {({ isSubmitting }) => (
+                        <Form>
+                           <div className=' items-start '>
+                                    <h1 className="text-1xl md:text-2xl font-bold text-gray-900 p-2">Write a message Showing your interest </h1>
+                                    <Field as="textarea" name="message" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border h-72 md:h-64 placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="message">
+                                        
+                                    </Field>
+                                    <ErrorMessage style={{ color: 'red' }} name="message" component="div" />
+                                </div>
+                                <div className='px-5 flex justify-end'>
+                                <button 
+                                    type="submit" 
+                                    disabled={isSubmitting}
+                                    className='bg-gray-900 rounded-full px-6 py-2 text-sm font-semibold text-slate-200 text-xl hover:bg-slate-600'>
+                                Apply
+                                </button>
+                            </div>
+                        </Form>
+                        )}
+                      </Formik>
+                  </div>
+                 </div>   
               </div>
+              
+              }
             </div>
           </div>
           <div className="opacity-75 fixed inset-0 z-40 bg-black"></div>
