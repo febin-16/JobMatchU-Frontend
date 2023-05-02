@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../App.css";
 import {AiOutlineSearch} from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -9,9 +10,9 @@ import { BASE_URL } from "../constants/urls";
 import { UserContext } from "../context/UserContextProvider";
 import { CategoryContext } from "../context/CategoryContextProvider";
 import { getCategoryDetails } from "../api/GetCategoryDetails";
-import { useNavigate } from "react-router-dom";
 import { ProfileUpdate } from "../api/ProfileUpdate";
 import { getSearch } from "../api/jobSearch";
+import { SearchContext } from "../context/SearchContextProvider";
 const CLIENT_ID = config.googleClientId;
 function Navbar() {
   const [searchData,setSearchData] = useState("");
@@ -20,6 +21,7 @@ function Navbar() {
   const { user, setUser } = useContext(UserContext);
   const { category, setCategory } = useContext(CategoryContext);
   const [profile, setProfile] = useState(null);
+  const {search,setSearch} = useContext(SearchContext)
   let navigate = useNavigate();
   async function handleSearch(e){
     e.preventDefault();
@@ -27,7 +29,8 @@ function Navbar() {
     try
     {
       const data = await getSearch(searchData);
-      //console.log(data);
+      console.log(data);
+      setSearch(data);
     }
     catch(error)
     {
@@ -35,7 +38,13 @@ function Navbar() {
     }
   }
   function handleOnChange(event) {
+      setSearch(null)
       setSearchData(event.target.value);
+      if(event.target.value!="")
+        navigate('/Search')
+      else{
+        navigate('/')
+      }  
   }
   
 function handleKeyDown(event) {

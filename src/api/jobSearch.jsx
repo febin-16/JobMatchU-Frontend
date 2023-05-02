@@ -1,16 +1,14 @@
 import axios from 'axios';
 import { BASE_URL } from "../constants/urls";
-import config from '../config'
     
-
 export async function getSearch(data){
     
     const prompt = `jobs related to ${data} are:`;
-    const apiKey = config.API_KEY;
+    const apiKey = "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";
     const apiUrl = "https://api.openai.com/v1/completions";
+    const url = BASE_URL+'api/jobsearch/'
     try
     {
-        console.log(data);
         const response = await axios.post(apiUrl, {
             model: "text-davinci-002",
             prompt: prompt,
@@ -26,14 +24,14 @@ export async function getSearch(data){
             }
         })
         const dataa=response.data.choices[0].text.split('\n');
-        //dataa = dataa.push(data)
         let jobNames = dataa.filter((str) => str.trim() !== "");
         let strippedJobNames = jobNames.map(jobName => jobName.replace(/^-\d+\.\s*/, ''));
         strippedJobNames = strippedJobNames.map(jobName => jobName.replace(/^[-\d]+\.\s*/, '').replace(/^-/, ''));
         const job=[...strippedJobNames,data]
         console.log(job)
-        return response.data.choices[0].text;
-
+        const resp = await axios.post(url,{'jobNames':job});
+        console.log(resp.data)
+        return resp.data;
     }catch(error){
         console.log(error);
         throw error;
