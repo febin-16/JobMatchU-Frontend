@@ -1,5 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../App.css";
+import {AiOutlineSearch} from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
@@ -8,16 +10,50 @@ import { BASE_URL } from "../constants/urls";
 import { UserContext } from "../context/UserContextProvider";
 import { CategoryContext } from "../context/CategoryContextProvider";
 import { getCategoryDetails } from "../api/GetCategoryDetails";
-import { useNavigate } from "react-router-dom";
 import { ProfileUpdate } from "../api/ProfileUpdate";
+import { getSearch } from "../api/jobSearch";
+import { SearchContext } from "../context/SearchContextProvider";
 const CLIENT_ID = config.googleClientId;
 function Navbar() {
+  const [searchData,setSearchData] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [tempuser, setTempUser] = useState(null);
   const { user, setUser } = useContext(UserContext);
   const { category, setCategory } = useContext(CategoryContext);
   const [profile, setProfile] = useState(null);
+  const {search,setSearch} = useContext(SearchContext)
   let navigate = useNavigate();
+  async function handleSearch(e){
+    e.preventDefault();
+    //console.log(searchData);
+    try
+    {
+      const data = await getSearch(searchData);
+      console.log(data);
+      setSearch(data);
+    }
+    catch(error)
+    {
+      console.error(error);
+    }
+  }
+  function handleOnChange(event) {
+      setSearch(null)
+      setSearchData(event.target.value);
+      if(event.target.value!="")
+        navigate('/Search')
+      else{
+        navigate('/')
+      }  
+  }
+  
+function handleKeyDown(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    handleSearch(event);
+  }
+}
+  
 
   async function getProfileData() {
     try {
@@ -84,7 +120,6 @@ function Navbar() {
       console.error(error);
     }
   };
-
   const handleLogout = () => {
     setUser(null);
     localStorage.removeItem("username");
@@ -105,13 +140,14 @@ function Navbar() {
               >
                 JobMatchU
               </Link>
-              <div className="mx-10 hidden md:block">
+              <div className="mx-10 hidden md:block h-10">
                 <input
                   type="text"
-                  className="w-32 lg:w-64 px-4 py-3 leading-tight text-sm text-gray-700 bg-gray-100 rounded-md placeholder-gray-500 border border-transparent focus:outline-none focus:bg-white focus:shadow-outline focus:border-blue-400"
+                  className=" h-full w-32 lg:w-64 px-4 py-3 leading-tight text-sm text-gray-700 bg-gray-100 rounded-md placeholder-gray-500 border border-transparent focus:outline-none focus:bg-white focus:shadow-outline focus:border-blue-400"
                   placeholder="Search"
                   aria-label="Search"
-                />
+                  onKeyDown={handleKeyDown}  
+                  onChange={handleOnChange}              />
               </div>
             </div>
             <div className="flex md:hidden">
@@ -193,14 +229,18 @@ function Navbar() {
               </GoogleOAuthProvider>
             </div>
 
-            <div className="mt-3 md:hidden">
+            <form className="mt-3 md:hidden" onSubmit={handleSearch}>
               <input
                 type="text"
-                className="w-full px-4 py-3 leading-tight text-sm text-gray-700 bg-gray-100 rounded-md placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline"
+                className="w-3/4 px-4 py-3 leading-tight text-sm text-gray-700 bg-gray-100 rounded-md placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline"
                 placeholder="Search"
                 aria-label="Search"
+                onInput={handleOnChange}
               />
-            </div>
+              <button type="submit" className="mx-1 px-4 py-3 rounded-md bg-gray-100">
+                <AiOutlineSearch/>
+              </button>
+            </form>
           </div>
         </div>
         <div className="flex flex-row mt-3 -mx-3 overflow-scroll scroll-hidden">
