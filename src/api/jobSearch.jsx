@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { BASE_URL } from "../constants/urls";
+import config from '../config'
+    
 
 export async function getSearch(data){
     
     const prompt = `jobs related to ${data} are:`;
-    const apiKey = "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";
+    const apiKey = config.API_KEY;
     const apiUrl = "https://api.openai.com/v1/completions";
     try
     {
