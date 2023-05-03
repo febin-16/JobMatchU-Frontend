@@ -83,6 +83,7 @@ function handleKeyDown(event) {
       try {
         const cat = await getCategoryDetails();
         setCategory(cat);
+        
       } catch (error) {
         console.log(error);
       }
