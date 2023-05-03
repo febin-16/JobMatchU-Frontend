@@ -3,17 +3,30 @@ import { useParams} from "react-router-dom";
 import JobCard from "../components/JobCard"
 import { Formik, Form, Field } from "formik";
 import { CategoryContext } from "../context/CategoryContextProvider";
+import { JobCategoryDetails } from "../api/JobCategoryDetails";
 import * as Yup from "yup";
 function Category() {
   const {category} = useContext(CategoryContext)
   const route = useParams();
   const [cat,setCat]=useState(null);
+  const [jobs,setJobs]=useState(null);
   useEffect(() => {
     const index = category.findIndex((item) => {
       return route.category_id == item.id;
     });
     if (index !== -1) {
       console.log(index);
+      async function getCategoryData(){
+        try{
+          const jobs = await JobCategoryDetails(index+1)
+          console.log(jobs)
+          setJobs(jobs)
+        }
+        catch(error){
+          console.error(error);
+        }
+      }
+      getCategoryData();
       setCat(category[index]);
     }
   }, [route]);
@@ -143,31 +156,22 @@ function Category() {
             !isOpen ? "hidden" : "block"
           } md:block w-full h-auto p-4 flex justify-between`}>
             <div className='w-full grid grid-cols-1  md:grid-cols-2 md:gap-4 lg:grid-cols-3 justify-items-center'>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
+            {jobs?
+                jobs.map((j) => {
+                return (
+                    <div  className='w-full' key={j.id}>
+                        <JobCard job={j} />
+                    </div>
+                );
+            })
+            
+            :
+            <div className='w-full p-10 h-[150px] flex justify-center items-center '>
+                <div className='text-3xl font-bold'>
+                SORRY NO JOBS FOUND :)
+                </div>
+            </div>
+            } 
             </div>
         </div>
     </div>
