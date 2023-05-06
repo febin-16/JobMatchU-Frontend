@@ -26,40 +26,16 @@ function Profile_Info(){
         job_description:""
     };
 
-    const [file, setFile]  = useState()
     const {user} = useContext(UserContext)
+    const [certificate,setCertificate]=useState(null);
+    const [workexp,setWorkexp] = useState(null);
 
     function handleFile(event){
-        setFile(event.target.files[0])
-        // console.log(event.target.files[0])
-    }
-
-    // function handleUpload(){
-    //     const formData = new FormData();
-    //     formData.append('file', certificate)
-    //     fetch(
-    //         'url',
-    //         {
-    //             method: "POST",
-    //             body: formData,
-    //         }.then((response) => response.json())
-    //         .then(
-    //             (result) => {
-    //                 console.log('success',result)
-    //             }
-    //         )
-    //         .catch((error) => {
-    //             console.error('Error: ',error)
-    //         })
-    //     )
-    // }
-
-    // const  [entry,setEntry] = useState([])
-    // const handleAdd = () => {
-    //     const val = [...entry,[]]
-    //     setEntry(val)
-    // }
-
+        setCertificate(event.target.files[0])
+    }  
+    function handleFilee(event){
+        setWorkexp(event.target.files[0])
+    }     
     const validationSchema = Yup.object().shape({
         first_name: Yup.string().required("First name is required"),
         last_name: Yup.string().required("Last name is required"),
@@ -79,11 +55,28 @@ function Profile_Info(){
     });
 
     async function onSubmit(values, {setSubmitting, resetForm}) {
-        //console.log(values);
+        console.log(values);
         try {
-            console.log(values);
+            values={...values,'certificate':certificate}
+            values={...values,'workexperience':workexp}
+            const formData = new FormData();
+            formData.append('certificate', certificate);
+            formData.append('workexperience', workexp);
+            formData.append('first_name', values.first_name);
+            formData.append('last_name', values.last_name);
+            formData.append('dob', values.dob);
+            formData.append('phone_number', values.phone_number);
+            formData.append('country', values.country);
+            formData.append('state', values.state);
+            formData.append('district', values.district);
+            formData.append('city', values.city);
+            formData.append('pincode', values.pincode);
+            formData.append('level_of_edu', values.level_of_edu);
+            formData.append('field_of_study', values.field_of_study);
+            formData.append('skills', values.skills);
+            formData.append('job_title', values.job_title);
+            formData.append('job_description', values.job_description);
             const username = localStorage.getItem("username");
-            console.log(username);
             await ProfileUpdate(username, values,1);
             alert("Profile Updated successful");
             localStorage.setItem('ProfileInfo',JSON.stringify(values))
@@ -193,7 +186,7 @@ function Profile_Info(){
                             </div>
                             <div className='h-auto w-full flex flex-col md:flex-row'>
                                 <div className='md:w-2/5 items-start py-3'>
-                                    <Field type="text" name="Skills" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Skills">
+                                    <Field type="text" name="skills" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="skills">
                                         
                                     </Field>
                                 </div>
@@ -231,7 +224,7 @@ function Profile_Info(){
                                 </div>
                             </div>
                             <div  className=' flex flex-row w-3/4 md:w-2/5 items-start py-3'>
-                                <Field type="file" name="certificate" onChange={handleFile} className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500'>
+                                <Field type="file" name="workexp" onChange={handleFilee} className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500'>
                                     
                                 </Field>
                                 <button type="button" className='flex flex-row hover:cursor-pointer hover:bg-gray-200'> 
