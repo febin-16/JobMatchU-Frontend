@@ -2,6 +2,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
 import Category from "./pages/Category";
+import Favourites from "./pages/Favourites";
 import { UserContextProvider } from "./context/UserContextProvider";
 import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
 import './App.css'
@@ -17,6 +18,7 @@ function App() {
                 <Route path={"/"} element={<Home/>} exact />
                 <Route path={"/Profile"} element={<Profile/>} exact />
                 <Route path={"/Category"} element={<Category/>} exact />
+                <Route path={"/Favourites"} element={<Favourites/>} exact />
               </Routes>
             </div>
         </UserContextProvider>
