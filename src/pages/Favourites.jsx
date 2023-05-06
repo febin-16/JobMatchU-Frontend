@@ -38,7 +38,7 @@ function Favourites() {
   async function handleWishlist(){
     const profileInfo = JSON.parse(localStorage.getItem('ProfileInfo'));
     const job_id = showDataModal.id;
-    const owner_id = showDataModal.owner
+    const owner_id = showDataModal.owner.id
     if(profileInfo!=null)
     {
        try {
@@ -96,7 +96,7 @@ function Favourites() {
                     </div>
                     <div className="py-2 ml-4">
                       <h1 className="text-xl font-semibold py-1">
-                        Company Name
+                        {showDataModal.owner.name}
                       </h1>
                       <h1 className="text-lg py-1">{showDataModal.location}</h1>
                       <h1 className="text-lg py-1">{showDataModal.stripend} a month</h1>
@@ -124,15 +124,21 @@ function Favourites() {
                     </div>
                     <div className="py-2">
                       <span className="ml-8 inline-block bg-gray-300 rounded px-1 py-1 text-lg">
-                        Full-time
+                        {showDataModal.locationtype}
                       </span>
                     </div>
-                    <div className="flex ml-2 px-1 py-2">
-                      <HiOutlineClipboardList className="w-5 h-5 place-self-center mr-1" />
-                      <span className="text-lg space-x-2 font-medium text-gray">
-                        Tag 1
-                      </span>
-                    </div>
+                    {showDataModal.tags&&<div className='flex flex-row flex-wrap space-x-2 pt-2'>
+					          {showDataModal.tags&&showDataModal.tags.map((j)=>{
+						      return(
+							    <div className='flex bg-gray-300 rounded'>
+								    <HiOutlineClipboardList className='place-self-center'/>
+									    <span>{j}</span>
+							    </div>
+						      );
+					      })
+					      }
+
+				        </div>}
                   </div>
                   <div className="border-t border-solid border-gray-400 py-2">
                     <h1 className="text-xl font-bold py-2">Full Description</h1>
@@ -145,7 +151,7 @@ function Favourites() {
                     <div className="flex flex-row py-2 ml-4">
                       <BiUserPlus className="w-6 h-6 place-self-center mr-1" />
                       <span className="text-lg space-x-2 text-gray">
-                        Hiring 2 Candidates for this role
+                        Hiring {showDataModal.count} Candidates for this role
                       </span>
                     </div>
                   </div>

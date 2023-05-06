@@ -18,7 +18,8 @@ function JobCard({job}){
 				<h2 className="text-2xl font-bold text-gray-900 mr-4">{job.title}</h2>
 			</div>
 			<div className=''>
-				<h3 className="flex flex-wrap text-xl font-large text-gray-900 pt-1">Company Name</h3>
+				<h3 className="flex flex-wrap text-xl font-large text-gray-900 pt-1">{job.owner.name}</h3>
+				<h3 className="text-xl font-large text-gray-900 pb-1">{job.locationtype}</h3>
 				<h3 className="text-xl font-large text-gray-900 pb-1">{job.location}</h3>
 				
 				<div className='flex flex-row flex-wrap space-x-2 pt-1'>
@@ -28,25 +29,22 @@ function JobCard({job}){
 					</div>
 					<div  className='flex px-1 bg-gray-300 rounded'>
 						<BsBriefcaseFill  className='place-self-center mr-1'/>
-						<span className="text-md font-medium text-grey">Full Time</span>
+						<span className="text-md font-medium text-grey">{console.log(job)}</span>
 					</div>
 				</div>
 				
-				<div className='flex flex-row flex-wrap space-x-2 pt-2'>
-					<div className='flex bg-gray-300 rounded'>
-						<HiOutlineClipboardList className='place-self-center'/>
-						<span>Tag 1</span>
-					</div>
-					<div className='flex bg-gray-300 rounded'>
-						<HiOutlineClipboardList className='place-self-center'/>
-						<span>Tag 2</span>
-					</div>
-					<div className='flex bg-gray-300 rounded'>
-						<HiOutlineClipboardList className='place-self-center'/>
-						<span>Tag 3</span>
-					</div>
+				{job.tags&&<div className='flex flex-row flex-wrap space-x-2 pt-2'>
+					{job.tags&&job.tags.map((j)=>{
+						return(
+							<div className='flex bg-gray-300 rounded'>
+								<HiOutlineClipboardList className='place-self-center'/>
+									<span>{j}</span>
+							</div>
+						);
+					})
+					}
 
-				</div>
+				</div>}
 				
 			</div>
 			<div className="flex justify-end pt-2">
