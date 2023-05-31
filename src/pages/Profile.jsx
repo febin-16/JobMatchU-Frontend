@@ -1,7 +1,9 @@
 import React,{useState,useContext} from 'react'
 import { Link } from 'react-router-dom'
+import Profile_Info from '../components/Profile_Info'
 import Prof_Application from '../components/Prof_Application'
 import { UserContext } from "../context/UserContextProvider";
+import Favourites from './Favourites';
 function Profile() {
   const [isOpen, setIsOpen] = useState(true);
   const [prof, setProf] = useState("Profile");
@@ -66,16 +68,6 @@ function Profile() {
             <span>My Applications</span>
           </Link>
 
-          <Link
-            onClick={() => setProf("Favourites")}
-            className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600"
-          >
-            <span className="text-2xl">
-              <i className="bx bx-heart"></i>
-            </span>
-            <span>My Favourites</span>
-          </Link>
-
                 <Link onClick={()=>setProf("Profile")}  className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
                     <span className="text-2xl"><i className="bx bx-user"></i></span>
                     <span>Profile</span>
@@ -83,7 +75,7 @@ function Profile() {
             </aside>
             {prof=="Profile" && 
                 <div className="w-full p-4">
-                    Profile
+                    <Profile_Info/>
                 </div>
             }   
             {prof=="Chat" && 
@@ -100,12 +92,7 @@ function Profile() {
                 <div className={`${isOpen ? "hidden":"block"} w-full  md:block`} >
                     <Prof_Application/>
                 </div>
-            }
-            {prof=="Favourites" && 
-                <div className="w-full p-4">
-                    Favourites
-                </div>
-            }   
+            } 
             </div>
     </main>
   );

@@ -1,9 +1,35 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState,useContext,useEffect } from "react";
+import { useParams} from "react-router-dom";
 import JobCard from "../components/JobCard"
 import { Formik, Form, Field } from "formik";
+import { CategoryContext } from "../context/CategoryContextProvider";
+import { JobCategoryDetails } from "../api/JobCategoryDetails";
 import * as Yup from "yup";
 function Category() {
+  const {category} = useContext(CategoryContext)
+  const route = useParams();
+  const [cat,setCat]=useState(null);
+  const [jobs,setJobs]=useState(null);
+  useEffect(() => {
+    const index = category.findIndex((item) => {
+      return route.category_id == item.id;
+    });
+    if (index !== -1) {
+      console.log(index);
+      async function getCategoryData(){
+        try{
+          const jobs = await JobCategoryDetails(index+1)
+          console.log(jobs)
+          setJobs(jobs)
+        }
+        catch(error){
+          console.error(error);
+        }
+      }
+      getCategoryData();
+      setCat(category[index]);
+    }
+  }, [route]);
     const initialValues = {
         stipend: "",
         modeOfWork: [],
@@ -40,6 +66,9 @@ function Category() {
       className="min-h-screen w-full bg-gray-100 text-gray-700"
       x-data="layout"
     >
+      {cat&&<div className="py-4 text-3xl md:text-4xl font-medium flex justify-center">
+          {cat.name}
+        </div>}
       <header className="flex w-full items-center justify-between border-b-2 border-gray-200 bg-white p-2">
         <div className="flex items-center space-x-2">
           <button
@@ -57,7 +86,6 @@ function Category() {
           <div>Filter</div>
         </div>
       </header>
-
       <div className="w-full flex">
         <aside
           className={`h-screen flex w-72  flex-col space-y-2 border-r-2 border-gray-200 bg-white p-2 ${
@@ -128,31 +156,22 @@ function Category() {
             !isOpen ? "hidden" : "block"
           } md:block w-full h-auto p-4 flex justify-between`}>
             <div className='w-full grid grid-cols-1  md:grid-cols-2 md:gap-4 lg:grid-cols-3 justify-items-center'>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
-                    <JobCard/>
+            {jobs?
+                jobs.map((j) => {
+                return (
+                    <div  className='w-full' key={j.id}>
+                        <JobCard job={j} />
+                    </div>
+                );
+            })
+            
+            :
+            <div className='w-full p-10 h-[150px] flex justify-center items-center '>
+                <div className='text-3xl font-bold'>
+                SORRY NO JOBS FOUND :)
+                </div>
+            </div>
+            } 
             </div>
         </div>
     </div>
