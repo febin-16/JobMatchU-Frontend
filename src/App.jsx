@@ -32,6 +32,7 @@ function App() {
   function handleFav(){
     setModal(false);
     localStorage.setItem('Recommented',selectedOptions)
+    console.log(selectedOptions)
     setFlag(true)
   }
   useEffect(()=>{
