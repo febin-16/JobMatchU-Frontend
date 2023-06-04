@@ -29,14 +29,14 @@ function JobCard({job}){
 					</div>
 					<div  className='flex px-1 bg-gray-300 rounded'>
 						<BsBriefcaseFill  className='place-self-center mr-1'/>
-						<span className="text-md font-medium text-grey">{console.log(job)}</span>
+						<span className="text-md font-medium text-grey">{}</span>
 					</div>
 				</div>
 				
 				{job.tags&&<div className='flex flex-row flex-wrap space-x-2 pt-2'>
-					{job.tags&&job.tags.map((j)=>{
+					{job.tags&&job.tags.map((j,index)=>{
 						return(
-							<div className='flex bg-gray-300 rounded'>
+							<div className='flex bg-gray-300 rounded' key={index}>
 								<HiOutlineClipboardList className='place-self-center'/>
 									<span>{j}</span>
 							</div>

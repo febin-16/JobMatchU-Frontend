@@ -49,7 +49,7 @@ function Profile() {
             <span>Dashboard</span>
           </Link>
 
-          <Link
+          {/* <Link
             onClick={() => setProf("Chat")}
             className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600"
           >
@@ -57,7 +57,7 @@ function Profile() {
               <i className="bx bx-cart"></i>
             </span>
             <span>Chat</span>
-          </Link>
+          </Link> */}
 
           <Link
             onClick={() => setProf("Applications")}
