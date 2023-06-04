@@ -15,34 +15,42 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-function JobList() {
+function JobList({flag}) {
   const initialValues = {
     message:""
   };
   const validationSchema = Yup.object().shape({
     message: Yup.string().required("message is required"),
   });
+  const [id,setId] = useState(null);
   const [message,setMessage] = useState(false);
+  const [suggested,setSuggested] = useState(null);
   const { showModal, setShowModal } = useContext(ModalContext);
   const { job, setJob } = useContext(JobContext);
   const {showDataModal,setShowDataModal} = useContext(ModalDataContext);
   const {user} = useContext(UserContext);
   const navigate = useNavigate();
   useEffect(() => {
+    const data=localStorage.getItem('Recommented');
+    setId(data);
     async function getJobData() {
       try {
         const jobs = await getJobDetails();
+        console.log(jobs)
+
+        const suggested = jobs.filter((item)=>data.includes(item.subcategory))
+        setSuggested(suggested);
+        console.log("suggested",suggested);
         setJob(jobs);
       } catch (error) {
         console.log(error);
       }
     }
     getJobData();
-  }, [setShowModal]);
+  }, [setShowModal,flag]);
   const handleModel = (j) => {
     setShowDataModal(j);
     setShowModal(true);
-    console.log(j);
   };
   const handleApply = () => {
     setMessage(!message);
@@ -70,7 +78,6 @@ function JobList() {
   async function onSubmit(values, {setSubmitting, resetForm}) {
     const username = localStorage.getItem("username");
     try {
-        console.log(values,username,showDataModal.id);
         await ApplyJob(showDataModal.id,username,values,1);
         alert("Application Successful");
         resetForm();
@@ -95,13 +102,16 @@ function JobList() {
           className="flex flex-col md:flex-row overflow-y-scroll md:overflow-x-scroll scroll-hidden"
           style={{ maxHeight: "54vh" }}
         >
-          {job &&
-            job.map((j) => {
-              return (
-                <div onClick={()=>handleModel(j)} key={j.id}>
-                  <JobCard job={j} />
-                </div>
-              );
+          {suggested &&
+            suggested.map((j) => {
+              {
+                
+                return (  
+                  <div onClick={()=>handleModel(j)} key={j.id}>
+                    <JobCard job={j} />
+                  </div>
+                );
+              }
             })}
         </div>
       </div>
@@ -115,11 +125,20 @@ function JobList() {
         >
           {job &&
             job.map((j) => {
-              return (
-                <div onClick={()=>handleModel(j)} key={j.id}>
-                  <JobCard job={j} />
-                </div>
-              );
+              if(j.subcategory==1)
+              {  
+                return (
+                  <div onClick={()=>handleModel(j)} key={j.id}>
+                    <JobCard job={j} />
+                  </div>
+                );
+              }
+              else
+              {
+                return(
+                  <div key={j.id}></div>
+                );
+              }  
             })}
         </div>
       </div>
@@ -133,11 +152,41 @@ function JobList() {
         >
           {job &&
             job.map((j) => {
-              return (
-                <div onClick={()=>handleModel(j)} key={j.id}>
-                  <JobCard job={j} />
-                </div>
-              );
+              if(j.subcategory==2)
+              {    
+                return (
+                  <div onClick={()=>handleModel(j)} key={j.id}>
+                    <JobCard job={j} />
+                  </div>
+                );
+              }  
+              else
+              {
+                return(
+                  <div key={j.id}></div>
+                );
+              }  
+            })}
+        </div>
+      </div>
+      <div className=" w-full">
+        <h3 className="py-4 text-3xl md:text-4xl font-medium flex justify-center md:justify-start">
+            All Jobs
+        </h3>
+        <div
+          className="flex flex-col md:flex-row overflow-y-scroll md:overflow-x-scroll scroll-hidden"
+          style={{ maxHeight: "54vh" }}
+        >
+          {job &&
+            job.map((j) => {
+              {    
+                return (
+                  <div onClick={()=>handleModel(j)} key={j.id}>
+                    <JobCard job={j} />
+                  </div>
+                );
+              }  
+      
             })}
         </div>
       </div>

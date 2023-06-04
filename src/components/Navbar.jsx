@@ -29,7 +29,6 @@ function Navbar() {
     try
     {
       const data = await getSearch(searchData);
-      console.log(data);
       setSearch(data);
     }
     catch(error)
@@ -60,7 +59,6 @@ function handleKeyDown(event) {
       const username = localStorage.getItem("username");
       const prof = await ProfileUpdate(username, 1, 2);
       setProfile(prof);
-      console.log(prof);
     } catch (error) {
       console.log(error);
     }
@@ -98,13 +96,11 @@ function handleKeyDown(event) {
     }
   }, [profile]);
   const handleLogin = async (googleData) => {
-    console.log(googleData);
     try {
       const response = await axios.post(BASE_URL + "api/auth/google/", {
         token: googleData.credential,
       });
       const data = response.data;
-      console.log(data.user.username);
       const userInfo = {
         username: data.username,
         email: data.email,
@@ -116,7 +112,6 @@ function handleKeyDown(event) {
       localStorage.setItem("image_url", data.user.image_url);
       localStorage.setItem("ProfileInfo", " ");
       getProfileData();
-      console.log(localStorage);
     } catch (error) {
       console.error(error);
     }
@@ -127,6 +122,7 @@ function handleKeyDown(event) {
     localStorage.removeItem("email");
     localStorage.removeItem("image_url");
     localStorage.removeItem("ProfileInfo");
+    localStorage.removeItem("Recommented");
   };
 
   return (

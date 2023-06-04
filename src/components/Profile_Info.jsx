@@ -57,6 +57,7 @@ function Profile_Info(){
     async function onSubmit(values, {setSubmitting, resetForm}) {
         console.log(values);
         try {
+        
             values={...values,'certificate':certificate}
             values={...values,'workexperience':workexp}
             const formData = new FormData();

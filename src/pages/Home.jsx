@@ -2,11 +2,11 @@ import React from 'react'
 import JobList from '../components/JobList'
 import HeroSection from '../components/HeroSection'
 import Footer from '../components/Footer'
-function Home() {
+function Home({flag}) {
   return (
     <div className='w-full h-auto'>
        <HeroSection/>
-      <JobList/>
+      <JobList flag={flag}/>
       <Footer/>
     </div>
   )
