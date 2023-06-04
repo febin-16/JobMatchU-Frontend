@@ -237,7 +237,7 @@ function Profile_Info(){
                                 <button 
                                     type="submit" 
                                     disabled={isSubmitting}
-                                    className='bg-gray-900 rounded-full px-6 py-2 text-sm font-semibold text-slate-200 text-xl hover:bg-slate-600'>
+                                    className='bg-gray-900 rounded-full px-6 py-2 text-sm font-semibold text-slate-200  hover:bg-slate-600'>
                                 Save
                                 </button>
                             </div>

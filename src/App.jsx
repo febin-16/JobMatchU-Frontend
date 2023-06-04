@@ -4,7 +4,6 @@ import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
 import Category from "./pages/Category";
 import Favourites from "./pages/Favourites";
-import Favourites from "./pages/Favourites";
 import Search from "./pages/Search";
 import { UserContextProvider } from "./context/UserContextProvider";
 import { ModalContextProvider } from "./context/ModalContextProvider";
