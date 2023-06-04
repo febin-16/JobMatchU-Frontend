@@ -13,8 +13,7 @@ function HeroSection() {
           <div className="flex items-center">
             <div className="w-full md:w-1/2">
               <h1 className="text-4xl md:text-5xl font-medium mb-6">Welcome to JobMatchU</h1>
-              <p className="text-xl mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
-                euismod odio, gravida pellentesque urna varius vitae.</p>
+              <p className="text-xl mb-12">"Empowering students with part-time job opportunities to fuel their dreams and shape a brighter future."</p>
             </div>
             <div className="w-1/2 pl-16">
               <img src="https://source.unsplash.com/random?ux" className="hidden md:block h-64 w-full object-cover rounded-xl" alt="Layout Image"/>

@@ -16,6 +16,8 @@ import { SearchContextProvider } from "./context/SearchContextProvider";
 import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
 import { UserContext } from "../src/context/UserContextProvider";
 import './App.css'
+import { ProfileUpdate } from "./api/ProfileUpdate";
+import { recommentationUpdate } from "./api/RecommentationUpdate";
 function App() {
   const [modal,setModal]=useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -29,9 +31,14 @@ function App() {
       setSelectedOptions([...selectedOptions, option]);
     }
   };
-  function handleFav(){
+  async function handleFav(){
     setModal(false);
-    localStorage.setItem('Recommented',selectedOptions)
+    localStorage.setItem('Recommented',selectedOptions);
+    const user = localStorage.getItem('username');
+    const studentDetails = await ProfileUpdate(user,'',2);
+    console.log(': ',studentDetails);
+    const data = {favorite_categories : selectedOptions , student : studentDetails.id};
+    await recommentationUpdate(data);
     setFlag(true)
   }
   useEffect(()=>{
