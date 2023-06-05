@@ -4,6 +4,7 @@ import Profile_Info from '../components/Profile_Info'
 import Prof_Application from '../components/Prof_Application'
 import { UserContext } from "../context/UserContextProvider";
 import Favourites from './Favourites';
+import Dashboard from '../components/Dashboard';
 function Profile() {
   const [isOpen, setIsOpen] = useState(true);
   const [prof, setProf] = useState("Profile");
@@ -84,9 +85,7 @@ function Profile() {
                 </div>
             }  
             {prof=="Dashboard" && 
-                <div className="w-full p-4">
-                    Dashboard
-                </div>
+                <Dashboard/>
             }  
              {prof=="Applications" && 
                 <div className={`${isOpen ? "hidden":"block"} w-full  md:block`} >
