@@ -87,7 +87,7 @@ function Category() {
         </div>
       </header>
       <div className="w-full flex">
-        <aside
+        {/* <aside
           className={`h-screen flex w-72  flex-col space-y-2 border-r-2 border-gray-200 bg-white p-2 ${
             !isOpen ? "block" : "hidden"
           } `}
@@ -151,7 +151,7 @@ function Category() {
     </Formik>
             </div>
           </div>
-        </aside>
+        </aside> */}
         <div className={`${
             !isOpen ? "hidden" : "block"
           } md:block w-full h-auto p-4 flex justify-between`}>
