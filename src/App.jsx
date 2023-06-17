@@ -33,6 +33,8 @@ function App() {
   };
   async function handleFav(){
     setModal(false);
+    localStorage.setItem('Recommented',selectedOptions)
+    console.log(selectedOptions)
     localStorage.setItem('Recommented',selectedOptions);
     const user = localStorage.getItem('username');
     const studentDetails = await ProfileUpdate(user,'',2);
