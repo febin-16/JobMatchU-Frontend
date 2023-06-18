@@ -9,7 +9,7 @@ function Footer(){
       <div>
       <h2 className="mr-5 h-6 sm:h-9" >JobMatchU</h2>
         <p className="max-w-xs mt-4 text-sm text-gray-600">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, accusantium.
+        Unlocking opportunities, empowering students. JobMatchU - Your path to success begins here.
         </p>
         <div className="flex mt-8 space-x-6 text-gray-600">
           <Link className="hover:opacity-75" to='/' target="_blank" rel="noreferrer">
@@ -32,14 +32,14 @@ function Footer(){
           </Link>
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-3">
         <div>
           <p className="font-medium">
             Company
           </p>
           <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
-            <Link className="hover:opacity-75" to='/'> About </Link>
-            <Link className="hover:opacity-75" to='/'> Meet the Team </Link>
+            <Link className="hover:opacity-75" to='/AboutUs'> About Us</Link>
+            <Link className="hover:opacity-75" to='/MeetTheTeam'> Meet the Team </Link>
           </nav>
         </div>
         <div className='hidden md:block'>
@@ -59,7 +59,8 @@ function Footer(){
             Helpful Links
           </p>
           <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
-            <Link className="hover:opacity-75" to='/'> Contact </Link>
+            <Link className="hover:opacity-75" to='/'> Contact Us</Link>
+            <a href="mailto:jobmatchu@gmail.com" className=''>jobmatchu@gmail.com </a>
             <Link className="hover:opacity-75" to='/'> FAQs </Link>
           </nav>
         </div>

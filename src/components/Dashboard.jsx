@@ -28,7 +28,7 @@ function Dashboard() {
             </div>
 
             {details && 
-                    <div className='h-auto w-full flex flex-col justify-center min-px-5 md:px-40 py-5'>
+                    <div className='h-auto w-full flex flex-col justify-center min-px-5 md:px-40 py-5 px-4'>
                     
                     
                     
@@ -114,7 +114,7 @@ function Dashboard() {
                     <div className='h-auto w-full flex flex-col md:flex-row'>
                         <div className='md:w-2/5 items-start py-3'>
                             <div type="text" name="skills" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="skills">
-                                {details.skill}
+                                {details.skills}
                             </div>
                         </div>
                     </div>
