@@ -18,6 +18,8 @@ import { UserContext } from "../src/context/UserContextProvider";
 import './App.css'
 import { ProfileUpdate } from "./api/ProfileUpdate";
 import { recommentationUpdate } from "./api/RecommentationUpdate";
+import AboutUs from "./pages/AboutUs";
+import MeetTheTeam from "./pages/MeetTheTeam";
 function App() {
   const [modal,setModal]=useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -79,7 +81,9 @@ function App() {
                         <Route path={"/Profile"} element={<Profile/>} exact />
                         <Route path={"/Category/:category_id"} element={<Category/>} exact />        
                         <Route path={"/Favourites"} element={<Favourites/>} exact />   
-                        <Route path={"/Search"} element={<Search/>} exact />       
+                        <Route path={"/Search"} element={<Search/>} exact />   
+                        <Route path={"/AboutUs"} element={<AboutUs />} exact/>
+                        <Route path={"/MeetTheTeam"} element={<MeetTheTeam />} exact /> 
                       </Routes>
                     </div>
                             {modal && (

@@ -47,7 +47,7 @@ function JobList({flag}) {
       }
     }
     getJobData();
-  }, [setShowModal,flag]);
+  }, [setShowModal,flag,job]);
   const handleModel = (j) => {
     setShowDataModal(j);
     setShowModal(true);
@@ -56,38 +56,68 @@ function JobList({flag}) {
     setMessage(!message);
   };
    async function handleWishlist(){
-  const profileInfo = JSON.parse(localStorage.getItem('ProfileInfo'));
-  const job_id = showDataModal.id;
-  const owner_id = showDataModal.owner.id
-  if(profileInfo!= " ")
-  {
-     try {
-       await WishlistDetails(job_id,owner_id,user,1);
-     } catch (error) {
-       alert("Removed from wishlist");
-       console.log(error);
-     }
-  }
-  else
-  {
-    alert("Complete the profile to Wishlist :)");
-    navigate('/Profile');
-  }  
+    let profileInfo;
+    let profil = localStorage.getItem('ProfileInfo');
+    console.log('pro: ',profil);
+    if(profil == ' '){
+      
+      profileInfo = ' '
+    }
+    else{
+        profileInfo = JSON.parse(profil);
+    }
+    
+    const job_id = showDataModal.id;
+    const owner_id = showDataModal.owner.id
+    if(profileInfo!= " ")
+    {
+      try {
+        await WishlistDetails(job_id,owner_id,user,1);
+      } catch (error) {
+        alert("Removed from wishlist");
+        console.log(error);
+      }
+    }
+    else
+    {
+      alert("Complete the profile to Wishlist :)");
+      navigate('/Profile');
+    }  
   }
 
   async function onSubmit(values, {setSubmitting, resetForm}) {
-    const username = localStorage.getItem("username");
-    try {
-        await ApplyJob(showDataModal.id,username,values,1);
-        alert("Application Successful");
-        resetForm();
-      } catch (error) {
-        alert("Application failed");
-        console.log(error);
-      } finally {
-        setSubmitting(false);
-      }
-  }
+    let profileInfo;
+    let profil = localStorage.getItem('ProfileInfo');
+    let username = localStorage.getItem('username');
+    console.log('pro: ',profil);
+    if(profil == ' '){
+      
+      profileInfo = ' ';
+      alert('Please Update your Profile');
+    }
+    else{
+        if(username==null){
+          alert('Please Login First');
+        }
+        else{
+          profileInfo = JSON.parse(profil);
+          try {
+            await ApplyJob(showDataModal.id,username,values,1);
+            alert("Application Successful");
+            resetForm();
+          } catch (error) {
+            alert("Application failed");
+            console.log(error);
+          } finally {
+            setSubmitting(false);
+          }
+        }
+        
+    }
+      
+    }
+    
+  
 
   return (
     <div className="h-auto w-full p-5">

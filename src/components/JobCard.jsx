@@ -12,8 +12,8 @@ import {AiOutlineHeart} from "react-icons/ai";
 function JobCard({job}){
 	const [liked,setLiked] = useState(false);
   return (
-    <div className='w-full h-auto pb-2 md:pr-2 flex flex-row justify-center'>	
-		{job&&<div className="w-3/4 min-h-[300px] h-auto md:w-[400px] md:h-[300px] border border-solid rounded-xl p-4 bg-gray-200 hover:shadow-md drop-shadow-md hover:shadow-gray-400">
+    <div className='w-full  pb-2 md:pr-2 flex flex-row justify-center'>	
+		{job&&<div className="w-3/4   md:w-[400px]  border border-solid rounded-xl p-4 bg-gray-200 hover:shadow-md drop-shadow-md hover:shadow-gray-400">
 			<div className="flex justify-between items-center py-4 ">
 				<h2 className="text-2xl font-bold text-gray-900 mr-4">{job.title}</h2>
 			</div>
@@ -47,7 +47,7 @@ function JobCard({job}){
 				</div>}
 				
 			</div>
-			<div className="flex justify-end pt-2">
+			<div className="flex justify-end place-self-end pt-2">
 				<button className="bg-gray-900 rounded-full px-4 py-2 text-sm font-semibold text-slate-100 hover:bg-gray-500 focus:outline-none">View Details</button>
 				
 			</div>
