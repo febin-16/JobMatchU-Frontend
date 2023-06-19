@@ -37,10 +37,12 @@ function JobList({flag}) {
       try {
         const jobs = await getJobDetails();
         console.log(jobs)
-
+       if(data!=null)
+       { 
         const suggested = jobs.filter((item)=>data.includes(item.subcategory))
         setSuggested(suggested);
         console.log("suggested",suggested);
+       } 
         setJob(jobs);
       } catch (error) {
         console.log(error);
