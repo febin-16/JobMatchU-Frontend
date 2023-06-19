@@ -58,6 +58,7 @@ function JobList({flag}) {
    async function handleWishlist(){
     let profileInfo;
     let profil = localStorage.getItem('ProfileInfo');
+    let username = localStorage.getItem('username');
     console.log('pro: ',profil);
     if(profil == ' '){
       
@@ -72,7 +73,13 @@ function JobList({flag}) {
     if(profileInfo!= " ")
     {
       try {
-        await WishlistDetails(job_id,owner_id,user,1);
+        if(username == null){
+          alert('Please Login')
+        }
+        else{
+          await WishlistDetails(job_id,owner_id,user,1);
+        }
+        
       } catch (error) {
         alert("Removed from wishlist");
         console.log(error);
