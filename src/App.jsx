@@ -92,18 +92,18 @@ function App() {
                                   <div className="relative w-full  md:w-3/4 my-6 mx-auto max-w-5xl">
                                     {/*content*/}
                                     <div
-                                      className="border-0 rounded-xl shadow-xl relative flex flex-col w-full bg-gray-300 outline-none focus:outline-none overflow-y-scroll  scroll-hidden"
+                                      className="border-0 rounded-xl shadow-xl relative flex flex-col w-full bg-gray-500 outline-none focus:outline-none overflow-y-scroll  scroll-hidden"
                                       style={{ maxHeight: "80vh" }}
                                     >
                                     <div className="flex items-center justify-center p-6 border-t border-solid border-gray-400 rounded-b">
                                       <div  className="flex justify-center font-bold">
-                                        <h2>Please select the your area of interest </h2>
+                                        <h2 className="text-gray-100">Please select the your area of interest </h2>
                                       </div>
                                     </div>
                                     <div className="w-full grid grid-cols-2 md:gap-4 lg:grid-cols-3">
                                     {cat&&cat.map((i,index)=>{
                                       return(
-                                      <label className="text-1xl w-full grid  grid-cols-2 md:gap-1 lg:grid-cols-3 justify-items-center" key={i.id}> 
+                                      <label className="text-gray-100 -1xl w-full grid  grid-cols-2 md:gap-1 lg:grid-cols-3 justify-items-center" key={i.id}> 
                                         <input
                                           type="checkbox"
                                           checked={selectedOptions.includes(`${i.id}`)}
