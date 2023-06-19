@@ -150,13 +150,13 @@ function handleKeyDown(event) {
   }
 
   return (
-    <header className="bg-white shadow">
+    <header className="bg-gradient-to-r from-slate-800 to-slate-950  shadow">
       <nav className="container w-full mx-auto px-6 py-3">
         <div className="flex flex-col md:flex-row md:justify-between md:items-center">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
               <Link
-                className="text-gray-800 text-xl font-bold md:text-2xl hover:text-gray-700"
+                className="text-gray-100 text-xl font-bold md:text-2xl hover:text-gray-200"
                 to="/"
               >
                 JobMatchU
@@ -164,7 +164,7 @@ function handleKeyDown(event) {
               <div className="mx-10 hidden md:block h-10">
                 <input
                   type="text"
-                  className=" h-full w-32 lg:w-64 px-4 py-3 leading-tight text-sm text-gray-700 bg-gray-100 rounded-md placeholder-gray-500 border border-transparent focus:outline-none focus:bg-white focus:shadow-outline focus:border-blue-400"
+                  className=" h-full w-32 lg:w-64 px-4 py-3 leading-tight text-sm text-gray-700 bg-gray-100 rounded-md placeholder-gray-800 border border-transparent focus:outline-none focus:bg-white focus:shadow-outline focus:border-blue-400"
                   placeholder="Search"
                   aria-label="Search"
                   onKeyDown={handleKeyDown}  
@@ -175,7 +175,7 @@ function handleKeyDown(event) {
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 type="button"
-                className="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
+                className="text-gray-100 hover:text-gray-200 focus:outline-none focus:text-gray-600"
                 aria-label="toggle menu"
               >
                 <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
@@ -192,14 +192,14 @@ function handleKeyDown(event) {
           >
             <div className="flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1">
               <a
-                className="my-1 text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline md:mx-4 md:my-0 place-self-center"
+                className="my-1 text-sm text-gray-100 leading-5 hover:text-blue-600 hover:underline md:mx-4 md:my-0 place-self-center"
                 href='https://jobmatchuprovider.netlify.app/'
               >
                 Become A Provider
               </a>
               {}
               <button
-                className="my-1 text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline md:mx-4 md:my-0 place-self-center"
+                className="my-1 text-sm text-gray-100 leading-5 hover:text-blue-600 hover:underline md:mx-4 md:my-0 place-self-center"
                 // to="/Favourites"
                 onClick={handleFavorites}
               >
@@ -220,7 +220,7 @@ function handleKeyDown(event) {
                 </div>
               </button>
               <button
-                className="my-1 text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline md:mx-4 md:my-0 place-self-center"
+                className="my-1 text-sm text-gray-100 leading-5 hover:text-blue-600 hover:underline md:mx-4 md:my-0 place-self-center"
                 onClick={handleProfileButton}
               >
                 Profile
@@ -271,7 +271,7 @@ function handleKeyDown(event) {
             category.map((c) => {
               return (
                 <Link
-                  className="text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
+                  className="text-sm text-gray-100 leading-5 hover:text-blue-600 hover:underline mx-4 md:my-0"
                   to={`/Category/${c.id}`}
                   key={c.id}
                 >

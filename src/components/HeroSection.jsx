@@ -16,7 +16,7 @@ function HeroSection() {
               <p className="text-xl mb-12">"Empowering students with part-time job opportunities to fuel their dreams and shape a brighter future."</p>
             </div>
             <div className="w-1/2 pl-16">
-              <img src="https://source.unsplash.com/random?ux" className="hidden md:block h-64 w-full object-cover rounded-xl" alt="Layout Image"/>
+              <img src="../src/assets/hero.jpeg" className="hidden md:block h-64 w-full object-cover rounded-xl" alt="Layout Image"/>
           </div>
             </div>
           </div>
