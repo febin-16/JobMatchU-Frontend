@@ -60,7 +60,7 @@ function Search(){
     }  
     }
   return (
-    <div className='w-full'>
+    <div className='w-full bg-gray-900'>
         {search?<div className='w-full'>
         <div className={`w-full h-auto p-4 flex justify-between`}>
             <div className='w-full grid grid-cols-1  md:grid-cols-2 md:gap-4 lg:grid-cols-3 justify-items-center'>
@@ -75,7 +75,7 @@ function Search(){
             
             :
             <div className='w-full p-10 h-[150px] flex justify-center items-center '>
-                <div className='text-3xl font-bold'>
+                <div className='text-3xl font-bold text-gray-100'>
                 SORRY NO MATCHING JOBS FOUND :)
                 </div>
             </div>

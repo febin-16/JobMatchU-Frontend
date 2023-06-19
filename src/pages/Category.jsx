@@ -13,6 +13,7 @@ import { HiOutlineClipboardList } from "react-icons/hi";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ApplyJob } from "../api/AppyJob";
 import * as Yup from "yup";
+import Footer from "../components/Footer";
 function Category() {
   const {category} = useContext(CategoryContext)
   const { showModal, setShowModal } = useContext(ModalContext);
@@ -100,10 +101,10 @@ function Category() {
     }
   return (
     <main
-      className="min-h-screen w-full bg-gray-100 text-gray-700"
+      className="min-h-screen w-full bg-gray-900 text-gray-700"
       x-data="layout"
     >
-      {cat&&<div className="py-4 text-3xl md:text-4xl font-medium flex justify-center">
+      {cat&&<div className="py-4 text-3xl md:text-4xl  flex justify-center text-gray-100 font-serif font-bold ">
           {cat.name}
         </div>}
       {/* <header className="flex w-full items-center justify-between border-b-2 border-gray-200 bg-white p-2">
@@ -218,13 +219,13 @@ function Category() {
             <div className="relative w-full  md:w-3/4 my-6 mx-auto max-w-5xl">
               {/*content*/}
               {!message?<div
-                className="border-0 rounded-xl shadow-xl relative flex flex-col w-full bg-gray-300 outline-none focus:outline-none overflow-y-scroll  scroll-hidden"
+                className="border-0 rounded-xl shadow-xl relative flex flex-col w-full bg-gray-500 outline-none focus:outline-none overflow-y-scroll  scroll-hidden"
                 style={{ maxHeight: "80vh" }}
               >
                 <div className="relative  pl-6 py-5 md:p-6 flex-auto md:ml-8">
                   <div className="w-auto flex flex-col">
                     <div className="flex flex-row items-center justify-end pb-2">
-                      <button className="bg-gray-900 rounded-full px-4 py-2 text-sm font-semibold text-slate-200 text-xl hover:bg-slate-600"
+                      <button className="bg-gray-900 rounded-full px-4 py-2 text-sm font-semibold text-slate-200 text-xl hover:bg-slate-600 hover:text-slate-200"
                         onClick={handleApply}
                       >
                         Apply Now
@@ -238,47 +239,47 @@ function Category() {
                       {/* </button> */}
                     </div>
                     <div className="flex flex-row justify-between items-center py-2">
-                      <h1 className="font-bold font-sans text-3xl">{showDataModal.title}</h1>
+                      <h1 className="font-bold font-sans text-3xl  text-gray-100 font-serif">{showDataModal.title}</h1>
                     </div>
                     <div className="py-2 ml-4">
-                      <h1 className="text-xl font-semibold py-1">
+                      <h1 className="text-xl font-semibold py-1  text-gray-100 font-serif">
                         {showDataModal.owner.name}
                       </h1>
-                      <h1 className="text-lg py-1">{showDataModal.location}</h1>
-                      <h1 className="text-lg py-1">{showDataModal.stripend} a month</h1>
+                      <h1 className="text-lg py-1  text-gray-100 font-serif">{showDataModal.location}</h1>
+                      <h1 className="text-lg py-1  text-gray-100 font-serif">{showDataModal.stripend} a month</h1>
                     </div>
                   </div>
                   <div className="border-t border-solid border-gray-400 py-2">
-                    <h1 className="text-xl font-bold py-2">Job Details</h1>
+                    <h1 className="text-xl font-bold py-2  text-gray-100 font-serif">Job Details</h1>
                     <div className="flex ml-2 px-1 py-2">
                       <BiMoney className="w-5 h-5 place-self-center mr-1" />
-                      <span className="text-lg space-x-2 font-medium text-gray">
+                      <span className="text-lg space-x-2 font-medium text-gray  text-gray-100 font-serif">
                         Salary
                       </span>
                     </div>
                     <div className="py-2">
-                      <h1 className="ml-8 inline-block bg-gray-300 rounded px-1 py-1 text-lg">
+                      <h1 className="ml-8 inline-block bg-gray-600 rounded px-1 py-1 text-lg  text-gray-100 font-serif">
                         {showDataModal.stripend}
                          per month
                       </h1>
                     </div>
                     <div className="flex ml-2 px-1 py-1">
                       <BsBriefcaseFill className="w-5 h-5 place-self-center mr-1" />
-                      <span className="text-lg space-x-2 font-medium text-gray">
+                      <span className="text-lg space-x-2 font-medium   text-gray-100 font-serif">
                         Job Type
                       </span>
                     </div>
                     <div className="py-2">
-                      <span className="ml-8 inline-block bg-gray-300 rounded px-1 py-1 text-lg">
+                      <span className="ml-8 inline-block bg-gray-600 rounded px-1 py-1 text-lg  text-gray-100 font-serif">
                         {showDataModal.locationtype}
                       </span>
                     </div>
                     {showDataModal.tags&&<div className='flex flex-row flex-wrap space-x-2 pt-2'>
 					          {showDataModal.tags&&showDataModal.tags.map((j)=>{
 						      return(
-							    <div className='flex bg-gray-300 rounded'>
+							    <div className='flex bg-gray-600 rounded'>
 								    <HiOutlineClipboardList className='place-self-center'/>
-									    <span>{j}</span>
+									    <span className=" text-gray-100 font-serif">{j}</span>
 							    </div>
 						      );
 					      })
@@ -287,16 +288,16 @@ function Category() {
 				        </div>}
                   </div>
                   <div className="border-t border-solid border-gray-400 py-2">
-                    <h1 className="text-xl font-bold py-2">Full Description</h1>
-                    <p className="text-md ml-4 py-2">
+                    <h1 className="text-xl font-bold py-2  text-gray-100 font-serif">Full Description</h1>
+                    <p className="text-md ml-4 py-2  text-gray-100 font-serif">
                         {showDataModal.description}
                     </p>
                   </div>
                   <div className="border-t border-solid border-gray-400 py-2">
-                    <h1 className="text-xl font-bold py-2">Hiring Insights</h1>
+                    <h1 className="text-xl font-bold py-2  text-gray-100 font-serif">Hiring Insights</h1>
                     <div className="flex flex-row py-2 ml-4">
                       <BiUserPlus className="w-6 h-6 place-self-center mr-1" />
-                      <span className="text-lg space-x-2 text-gray">
+                      <span className="text-lg space-x-2 text-gray  text-gray-100 font-serif">
                         Hiring {showDataModal.count} Candidates for this role
                       </span>
                     </div>
@@ -304,7 +305,7 @@ function Category() {
                 </div>
                 <div className="flex items-center justify-end p-6 border-t border-solid border-gray-400 rounded-b">
                   <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="text-red-600 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
@@ -312,11 +313,11 @@ function Category() {
                   </button>
                 </div>
               </div>:
-              <div className="border-0 rounded-xl shadow-xl relative flex flex-col w-full bg-gray-300 outline-none focus:outline-none overflow-y-scroll  scroll-hidden" style={{ maxHeight: "80vh" }}>
+              <div className="border-0 rounded-xl shadow-xl relative flex flex-col w-full bg-gray-500 outline-none focus:outline-none overflow-y-scroll  scroll-hidden" style={{ maxHeight: "80vh" }}>
                 <div className="relative  pl-6 py-5 md:p-6 flex-auto md:ml-8">
                 <div className="flex items-center justify-end p-2 rounded-b">
                   <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="text-red-600 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={handleApply}
                   >
@@ -359,6 +360,7 @@ function Category() {
           <div className="opacity-75 fixed inset-0 z-40 bg-black"></div>
         </div>
       )}
+      <Footer/>
     </main>
  )
 }

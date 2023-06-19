@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom'
 
 function Footer(){
   return (
-    <footer className="bg-gray-100 shadow">
+    <footer className="bg-gray-950 shadow">
   <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <div>
-      <h2 className="mr-5 h-6 sm:h-9" >JobMatchU</h2>
-        <p className="max-w-xs mt-4 text-sm text-gray-600">
+      <h2 className="mr-5 h-6 sm:h-9 text-gray-100" >JobMatchU</h2>
+        <p className="max-w-xs mt-4 text-sm text-gray-100">
         Unlocking opportunities, empowering students. JobMatchU - Your path to success begins here.
         </p>
-        <div className="flex mt-8 space-x-6 text-gray-600">
+        <div className="flex mt-8 space-x-6 text-gray-100">
           <Link className="hover:opacity-75" to='/' target="_blank" rel="noreferrer">
             <span className="sr-only"> Facebook </span>
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -34,19 +34,19 @@ function Footer(){
       </div>
       <div className="grid grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-3">
         <div>
-          <p className="font-medium">
+          <p className="font-medium text-gray-100 font-serif">
             Company
           </p>
-          <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+          <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-100">
             <Link className="hover:opacity-75" to='/AboutUs'> About Us</Link>
             <Link className="hover:opacity-75" to='/MeetTheTeam'> Meet the Team </Link>
           </nav>
         </div>
         <div className='hidden md:block'>
-          <p className="font-medium">
+          <p className="font-medium text-gray-100 font-serif">
             Services
           </p>
-          <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+          <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-100">
             <Link className="hover:opacity-75" to='/'> 1on1 Mentoring </Link>
             <Link className="hover:opacity-75" to='/'> Company Review </Link>
             <Link className="hover:opacity-75" to='/'> Accounts Review </Link>
@@ -55,10 +55,10 @@ function Footer(){
           </nav>
         </div>
         <div>
-          <p className="font-medium">
+          <p className="font-medium text-gray-100 font-serif">
             Helpful Links
           </p>
-          <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+          <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-100">
             <Link className="hover:opacity-75" to='/'> Contact Us</Link>
             <a href="mailto:jobmatchu@gmail.com" className=''>jobmatchu@gmail.com </a>
             <Link className="hover:opacity-75" to='/'> FAQs </Link>
@@ -66,7 +66,7 @@ function Footer(){
         </div>
       </div>
     </div>
-    <p className="mt-8 text-xs text-gray-800">
+    <p className="mt-8 text-xs text-gray-100">
       © 2023 JobMatchU
     </p>
   </div>

@@ -12,15 +12,15 @@ import {AiOutlineHeart} from "react-icons/ai";
 function JobCard({job}){
 	const [liked,setLiked] = useState(false);
   return (
-    <div className='w-full  pb-2 md:pr-2 flex flex-row justify-center'>	
-		{job&&<div className="w-3/4   md:w-[400px]  border border-solid rounded-xl p-4 bg-gray-200 hover:shadow-md drop-shadow-md hover:shadow-gray-400">
+    <div className='w-full  pb-2 md:pr-2 flex flex-row justify-center '>	
+		{job&&<div className="w-3/4   md:w-[400px]  border border-solid rounded-xl p-4 bg-gray-700 bg-opacity-90 hover:shadow-md drop-shadow-md hover:shadow-gray-400">
 			<div className="flex justify-between items-center py-4 ">
-				<h2 className="text-2xl font-bold text-gray-900 mr-4">{job.title}</h2>
+				<h2 className="text-2xl font-bold text-gray-100 mr-4">{job.title}</h2>
 			</div>
 			<div className=''>
-				<h3 className="flex flex-wrap text-xl font-large text-gray-900 pt-1">{job.owner.name}</h3>
-				<h3 className="text-xl font-large text-gray-900 pb-1">{job.locationtype}</h3>
-				<h3 className="text-xl font-large text-gray-900 pb-1">{job.location}</h3>
+				<h3 className="flex flex-wrap text-xl font-large text-gray-100 pt-1">{job.owner.name}</h3>
+				<h3 className="text-xl font-large text-gray-100 pb-1">{job.locationtype}</h3>
+				<h3 className="text-xl font-large text-gray-100 pb-1">{job.location}</h3>
 				
 				<div className='flex flex-row flex-wrap space-x-2 pt-1'>
 					<div className='flex px-1 bg-gray-300 rounded'>
