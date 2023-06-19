@@ -29,13 +29,7 @@ function Profile_Info(){
     const {user} = useContext(UserContext)
     const [certificate,setCertificate]=useState(null);
     const [workexp,setWorkexp] = useState(null);
-
-    function handleFile(event){
-        setCertificate(event.target.files[0])
-    }  
-    function handleFilee(event){
-        setWorkexp(event.target.files[0])
-    }     
+    
     const validationSchema = Yup.object().shape({
         first_name: Yup.string().required("First name is required"),
         last_name: Yup.string().required("Last name is required"),
@@ -79,11 +73,11 @@ function Profile_Info(){
             formData.append('job_description', values.job_description);
             const username = localStorage.getItem("username");
             await ProfileUpdate(username, values,1);
-            alert("Profile Updated successful");
+            alert("Profile Updated successfully");
             localStorage.setItem('ProfileInfo',JSON.stringify(values))
             resetForm();
           } catch (error) {
-            alert("Registration closed");
+            alert("Profile Updation Failed");
             console.log(error);
           } finally {
             setSubmitting(false);
@@ -192,7 +186,7 @@ function Profile_Info(){
                                     </Field>
                                 </div>
                             </div>
-                            <div  className=' flex flex-row md:w-2/5 items-start py-3'>
+                            {/* <div  className=' flex flex-row md:w-2/5 items-start py-3'>
                                 <Field type="file" name="certificate" onChange={handleFile} className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500'>
                                     
                                 </Field>
@@ -200,7 +194,7 @@ function Profile_Info(){
                                     <span className='text-xl place-self-center font-semibold ml-3'>Upload</span>
                                     <AiOutlineCloudUpload className='mx-2 w-[40px] h-[40px] place-self-center' />
                                 </button>   
-                            </div>
+                            </div> */}
 
 
                             <h1 className='text-2xl font-serif font-bold text-gray-500 pt-4 pb-2'>Work Experience</h1>
@@ -224,7 +218,7 @@ function Profile_Info(){
                                     </Field>
                                 </div>
                             </div>
-                            <div  className=' flex flex-row w-3/4 md:w-2/5 items-start py-3'>
+                            {/* <div  className=' flex flex-row w-3/4 md:w-2/5 items-start py-3'>
                                 <Field type="file" name="workexp" onChange={handleFilee} className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500'>
                                     
                                 </Field>
@@ -233,7 +227,7 @@ function Profile_Info(){
                                     <AiOutlineCloudUpload className='mx-2 w-[40px] h-[40px] place-self-center' />
                                 </button>
                                 
-                            </div>
+                            </div> */}
                             <div className='py-3'>
                                 <button 
                                     type="submit" 

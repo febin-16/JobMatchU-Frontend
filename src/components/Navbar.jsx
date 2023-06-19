@@ -13,16 +13,20 @@ import { getCategoryDetails } from "../api/GetCategoryDetails";
 import { ProfileUpdate } from "../api/ProfileUpdate";
 import { getSearch } from "../api/jobSearch";
 import { SearchContext } from "../context/SearchContextProvider";
+
 const CLIENT_ID = config.googleClientId;
+
 function Navbar() {
+
   const [searchData,setSearchData] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [tempuser, setTempUser] = useState(null);
   const { user, setUser } = useContext(UserContext);
   const { category, setCategory } = useContext(CategoryContext);
   const [profile, setProfile] = useState(null);
-  const {search,setSearch} = useContext(SearchContext)
+  const {search,setSearch} = useContext(SearchContext);
   let navigate = useNavigate();
+
   async function handleSearch(e){
     e.preventDefault();
     //console.log(searchData);
@@ -125,6 +129,26 @@ function handleKeyDown(event) {
     localStorage.removeItem("Recommented");
   };
 
+  function handleFavorites(){
+    const username = localStorage.getItem("username");
+    if(username==null){
+      alert('Please Login First')
+    }
+    else{
+      navigate('/Favourites');
+    }
+  }
+
+  function handleProfileButton(){
+    const username = localStorage.getItem("username");
+    if(username==null){
+      alert('Please Login First')
+    }
+    else{
+      navigate('/Profile');
+    }
+  }
+
   return (
     <header className="bg-white shadow">
       <nav className="container w-full mx-auto px-6 py-3">
@@ -167,15 +191,17 @@ function handleKeyDown(event) {
             className={`md:flex items-center  ${isOpen ? "block" : "hidden"} `}
           >
             <div className="flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1">
-              <Link
-                className="my-1 text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline md:mx-4 md:my-0"
-                to="#"
+              <a
+                className="my-1 text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline md:mx-4 md:my-0 place-self-center"
+                href='https://jobmatchuprovider.netlify.app/'
               >
                 Become A Provider
-              </Link>
-              <Link
-                className="my-1 text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline md:mx-4 md:my-0"
-                to="/Favourites"
+              </a>
+              {}
+              <button
+                className="my-1 text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline md:mx-4 md:my-0 place-self-center"
+                // to="/Favourites"
+                onClick={handleFavorites}
               >
                 <div className="flex flex-row">
                   <svg
@@ -192,13 +218,13 @@ function handleKeyDown(event) {
                   </svg>
                   <span>Favourites</span>
                 </div>
-              </Link>
-              <Link
-                className="my-1 text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline md:mx-4 md:my-0"
-                to="/Profile"
+              </button>
+              <button
+                className="my-1 text-sm text-gray-700 leading-5 hover:text-blue-600 hover:underline md:mx-4 md:my-0 place-self-center"
+                onClick={handleProfileButton}
               >
                 Profile
-              </Link>
+              </button>
             </div>
 
             <div className="flex items-center py-2 -mx-1 md:mx-0">

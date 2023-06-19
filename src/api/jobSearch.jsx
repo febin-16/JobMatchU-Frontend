@@ -9,25 +9,25 @@ export async function getSearch(data){
     const url = BASE_URL+'api/jobsearch/'
     try
     {
-   //     const response = await axios.post(apiUrl, {
-   //         model: "text-davinci-002",
-   //         prompt: prompt,
-   //         temperature: 0,
-   //         max_tokens: 100,
-   //         top_p: 1,
-   //         frequency_penalty: 0,
-   //         presence_penalty: 1
-   //     }, {
-   //         headers: {
-   //             'Content-Type': 'application/json',
-   //             'Authorization': `Bearer ${apiKey}`
-   //         }
-   //     })
-   //     const dataa=response.data.choices[0].text.split('\n');
-   //     let jobNames = dataa.filter((str) => str.trim() !== "");
-   //     let strippedJobNames = jobNames.map(jobName => jobName.replace(/^-\d+\.\s*/, ''));
-   //     strippedJobNames = strippedJobNames.map(jobName => jobName.replace(/^[-\d]+\.\s*/, '').replace(/^-/, ''));
-       const job=[data]
+    //    const response = await axios.post(apiUrl, {
+    //        model: "text-davinci-002",
+    //        prompt: prompt,
+    //        temperature: 0,
+    //        max_tokens: 100,
+    //        top_p: 1,
+    //        frequency_penalty: 0,
+    //        presence_penalty: 1
+    //    }, {
+    //        headers: {
+    //            'Content-Type': 'application/json',
+    //            'Authorization': `Bearer ${apiKey}`
+    //        }
+    //    })
+    //    const dataa=response.data.choices[0].text.split('\n');
+    //    let jobNames = dataa.filter((str) => str.trim() !== "");
+    //    let strippedJobNames = jobNames.map(jobName => jobName.replace(/^-\d+\.\s*/, ''));
+    //    strippedJobNames = strippedJobNames.map(jobName => jobName.replace(/^[-\d]+\.\s*/, '').replace(/^-/, ''));
+        const job=[data]
         console.log(job)
         const resp = await axios.post(url,{'jobNames':job});
         console.log(resp.data)
