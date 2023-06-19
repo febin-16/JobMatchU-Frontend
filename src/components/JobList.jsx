@@ -49,7 +49,7 @@ function JobList({flag}) {
       }
     }
     getJobData();
-  }, [setShowModal,flag,job]);
+  }, [setShowModal,flag]);
   const handleModel = (j) => {
     setShowDataModal(j);
     setShowModal(true);
