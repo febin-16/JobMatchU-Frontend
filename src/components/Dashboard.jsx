@@ -23,7 +23,7 @@ function Dashboard() {
 
   return (
     <div className='h-auto w-full flex flex-col'>
-            <div className='h-[50px] w-full flex justify-center bg-gray-950 rounded-md items-center'>
+            <div className='h-[50px] flex justify-center bg-gray-900 rounded-md items-center m-4'>
                 <h1 className='text-2xl font-sans font-bold text-gray-100'>Dashboard</h1>
             </div>
 

@@ -267,7 +267,7 @@ function handleKeyDown(event) {
             </form>
           </div>
         </div>
-        <div className="flex flex-row mt-3 -mx-3 overflow-scroll scroll-hidden">
+        <div className="flex flex-row mt-3 -mx-3 overflow-scroll scroll-hidden md:justify-between">
           {category &&
             category.map((c) => {
               return (

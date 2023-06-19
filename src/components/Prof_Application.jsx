@@ -42,8 +42,9 @@ const Prof_Application = () => {
     getApplication();
   },[])
   return (
-    <div>
-        <TableContainer component={Paper}>
+    <div className='m-2'>
+  
+        <TableContainer component={Paper} >
       <Table sx={{ minWidth: 50 }} aria-label="simple table">
         <TableHead>
           <TableRow >

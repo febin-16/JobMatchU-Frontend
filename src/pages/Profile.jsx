@@ -15,7 +15,7 @@ function Profile() {
       className="min-h-screen w-full bg-slate-950 text-gray-700"
       x-data="layout"
     >
-      <header className="flex w-full items-center justify-between border-b-2 border-gray-200 bg-slate-900 p-2">
+      <header className="flex w-full items-center justify-between border-b-2 border-gray-200 bg-gradient-to-r from-slate-800 to-slate-950  shadow p-2">
         <div className="flex items-center space-x-2">
           <button
             onClick={() => setIsOpen(!isOpen)}

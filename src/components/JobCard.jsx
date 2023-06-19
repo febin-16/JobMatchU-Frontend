@@ -29,16 +29,16 @@ function JobCard({job}){
 					</div>
 					<div  className='flex px-1 bg-gray-300 rounded'>
 						<BsBriefcaseFill  className='place-self-center mr-1'/>
-						<span className="text-md font-medium text-grey">{}</span>
+						<span className="text-md font-medium text-grey">{job.jobtype}</span>
 					</div>
 				</div>
 				
 				{job.tags&&<div className='flex flex-row flex-wrap space-x-2 pt-2'>
 					{job.tags&&job.tags.map((j,index)=>{
 						return(
-							<div className='flex bg-gray-300 rounded' key={index}>
+							<div className='flex bg-gray-300 rounded pr-1' key={index}>
 								<HiOutlineClipboardList className='place-self-center'/>
-									<span>{j}</span>
+									<span className='place-self-center'>{j}</span>
 							</div>
 						);
 					})

@@ -4,7 +4,7 @@ import Footer from '../components/Footer'
 const AboutUs = () => {
   return (
 	<div className='bg-gray-950'>
-		<div className='h-[50px] w-full flex justify-center bg-gray-900 rounded-md items-center'>
+		<div className='h-[50px] w-full flex justify-center bg-gray-900  rounded-md items-center'>
                 <h1 className='text-2xl font-sans font-bold text-gray-100'>About Us</h1>
         </div>
 		<div className='md:px-40 p-4'>
