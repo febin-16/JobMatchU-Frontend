@@ -2,10 +2,10 @@ import axios from 'axios';
 import { BASE_URL } from "../constants/urls";
     
 export async function getSearch(data){
-    
-    const prompt = `jobs related to ${data} are:`;
-    const apiKey = "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";
-    const apiUrl = "https://api.openai.com/v1/completions";
+   // const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
+   // const prompt = `jobs related to ${data} are:`;
+   // const apiKey = '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'
+   // const apiUrl = "https://api.openai.com/v1/completions";
     const url = BASE_URL+'api/jobsearch/'
     try
     {

@@ -87,8 +87,8 @@ function Profile_Info(){
 
     return (
         <div className='h-auto w-full flex flex-col'>
-            <div className='h-[50px] w-full flex justify-center bg-gray-300 rounded-md items-center'>
-                <h1 className='text-2xl font-sans font-bold text-gray-500'>Profile</h1>
+            <div className='h-[50px] w-full flex justify-center bg-gray-900 rounded-md items-center'>
+                <h1 className='text-2xl font-sans font-bold text-gray-100'>Profile</h1>
             </div>
             <div className='h-auto w-full flex flex-col justify-center min-px-5 md:px-40 py-5'>
                 
@@ -101,16 +101,16 @@ function Profile_Info(){
                         <Form>
 
 
-                            <h1 className='text-2xl font-serif font-bold text-gray-500 pt-4 pb-2'>Basic Info</h1>
+                            <h1 className='text-2xl font-serif font-bold text-gray-100 pt-4 pb-2'>Basic Info</h1>
                             <div className='h-auto w-full flex flex-col justify-between md:flex-row'>
                                 <div className='md:w-2/5 items-start py-3 '>
-                                    <Field type="text" name="first_name" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="First Name">
+                                    <Field type="text" name="first_name" className='outline text-gray-100 bg-gray-900 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-100 focus:ring-1 focus:ring-cyan-500' placeholder="First Name">
                                         
                                     </Field>
                                     <ErrorMessage style={{ color: 'red' }} name="first_name" component="div" />
                                 </div>
                                 <div className='md:w-2/5 items-start py-3'>
-                                    <Field type="text" name="last_name" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Last Name">
+                                    <Field type="text" name="last_name" className='outline bg-gray-900 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-100 focus:ring-1 focus:ring-cyan-500 text-gray-100' placeholder="Last Name">
                                         
                                     </Field>
                                     <ErrorMessage style={{ color: 'red' }} name="last_name" component="div" />
@@ -118,26 +118,26 @@ function Profile_Info(){
                             </div>
                             <div className='h-auto w-full flex flex-col justify-between md:flex-row'>
                                 <div className='md:w-2/5  items-start py-3'>
-                                    <Field type="text" name="phone_number" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Phone Number">
+                                    <Field type="text" name="phone_number" className='outline text-gray-100 bg-gray-900 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-100 focus:ring-1 focus:ring-cyan-500' placeholder="Phone Number">
                                         
                                     </Field>
                                     <ErrorMessage style={{ color: 'red' }} name="phone_number" component="div" />
                                 </div>
                             </div>
                             <div className=' md:w-2/5 items-start py-3'>
-                                <Field type="text" name="dob" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Dob">
+                                <Field type="text" name="dob" className='outline text-gray-100 bg-gray-900 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-100 focus:ring-1 focus:ring-cyan-500' placeholder="Dob">
                                     
                                 </Field>
                             </div>
 
                             <div className='h-auto w-full flex flex-col justify-between md:flex-row'>
                                 <div className='md:w-2/5 items-start py-3'>
-                                    <Field type="text" name="country" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Country">
+                                    <Field type="text" name="country" className='outline text-gray-100 bg-gray-900 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-100 focus:ring-1 focus:ring-cyan-500' placeholder="Country">
                                         
                                     </Field>
                                 </div>
                                 <div className='md:w-2/5 items-start py-3'>
-                                    <Field type="text" name="state" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="State">
+                                    <Field type="text" name="state" className='outline text-gray-100 bg-gray-900 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-100 focus:ring-1 focus:ring-cyan-500' placeholder="State">
                                         
                                     </Field>
                                     <ErrorMessage style={{ color: 'red' }} name="state" component="div" />
@@ -145,35 +145,35 @@ function Profile_Info(){
                             </div>
                             <div className='h-auto w-full flex flex-col justify-between md:flex-row'>
                                 <div className='md:w-2/5 items-start py-3'>
-                                    <Field type="text" name="district" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="District">
+                                    <Field type="text" name="district" className='outline text-gray-100 bg-gray-900 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-100 focus:ring-1 focus:ring-cyan-500' placeholder="District">
                                         
                                     </Field>
                                     <ErrorMessage style={{ color: 'red' }} name="district" component="div" />
                                 </div>
                                 <div className='md:w-2/5 items-start py-3'>
-                                    <Field type="text" name="city" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="City">
+                                    <Field type="text" name="city" className='outline text-gray-100 bg-gray-900 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-100 focus:ring-1 focus:ring-cyan-500' placeholder="City">
                                         
                                     </Field>
                                 </div>
                             </div>
                             <div className='w-2/5 flex flex-col items-start py-3'>
-                                <Field type="text" name="pincode" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Pincode">
+                                <Field type="text" name="pincode" className='outline text-gray-100 bg-gray-900 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-100 focus:ring-1 focus:ring-cyan-500' placeholder="Pincode">
                                     
                                 </Field>
                                 <ErrorMessage style={{ color: 'red' }} name="pincode" component="div" />
                             </div>
                             
 
-                            <h1 className='text-2xl font-serif font-bold text-gray-500 pt-4 pb-2'>Academic Info</h1>
+                            <h1 className='text-2xl font-serif font-bold text-gray-100 pt-4 pb-2'>Academic Info</h1>
                             <div className='h-auto w-full flex flex-col justify-between md:flex-row'>
                                 <div className='md:w-2/5 items-start py-3 '>
-                                    <Field type="text" name="level_of_edu" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Level of Education">
+                                    <Field type="text" name="level_of_edu" className='outline text-gray-100 bg-gray-900 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-100 focus:ring-1 focus:ring-cyan-500' placeholder="Level of Education">
                                         
                                     </Field>
                                     <ErrorMessage style={{ color: 'red' }} name="level_of_edu" component="div" />
                                 </div>
                                 <div className='md:w-2/5 items-start py-3'>
-                                    <Field type="text" name="field_of_study" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Field of Study">
+                                    <Field type="text" name="field_of_study" className='outline text-gray-100 bg-gray-900 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-100 focus:ring-1 focus:ring-cyan-500' placeholder="Field of Study">
                                         
                                     </Field>
                                     <ErrorMessage style={{ color: 'red' }} name="field_of_study" component="div" />
@@ -181,7 +181,7 @@ function Profile_Info(){
                             </div>
                             <div className='h-auto w-full flex flex-col md:flex-row'>
                                 <div className='md:w-2/5 items-start py-3'>
-                                    <Field type="text" name="skills" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="skills">
+                                    <Field type="text" name="skills" className='outline text-gray-100 bg-gray-900 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-100 focus:ring-1 focus:ring-cyan-500' placeholder="skills">
                                         
                                     </Field>
                                 </div>
@@ -197,10 +197,10 @@ function Profile_Info(){
                             </div> */}
 
 
-                            <h1 className='text-2xl font-serif font-bold text-gray-500 pt-4 pb-2'>Work Experience</h1>
+                            <h1 className='text-2xl font-serif font-bold text-gray-100 pt-4 pb-2'>Work Experience</h1>
                             <div className='h-auto w-full flex flex-row justify-between md:flex-row'>
                                 <div className='w-3/4 md:w-2/5 items-start py-3 '>
-                                    <Field type="text" name="job_title" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Job Title">
+                                    <Field type="text" name="job_title" className='outline text-gray-100 bg-gray-900 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-100 focus:ring-1 focus:ring-cyan-500' placeholder="Job Title">
                                         
                                     </Field>
                                 </div>
@@ -213,7 +213,7 @@ function Profile_Info(){
                             </div>
                             <div className='h-auto w-full flex flex-col justify-between md:flex-row'>
                                 <div className='w-3/4 md:w-2/5 items-start py-3'>
-                                    <Field type="text" name="job_description" className='outline outline-gray-300 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-300 focus:ring-1 focus:ring-cyan-500' placeholder="Job Description">
+                                    <Field type="text" name="job_description" className='outline text-gray-100 bg-gray-900 rounded-sm py-1 px-2 w-full focus:outline-form-border placeholder-gray-100 focus:ring-1 focus:ring-cyan-500' placeholder="Job Description">
                                         
                                     </Field>
                                 </div>
