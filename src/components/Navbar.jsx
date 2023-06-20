@@ -155,6 +155,7 @@ function handleKeyDown(event) {
         <div className="flex flex-col md:flex-row md:justify-between md:items-center">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
+              <img src='/logo png.png' className='w-[30px] h-[30px] place-self-center mx-2 ' />
               <Link
                 className="text-gray-100 text-xl font-bold md:text-2xl hover:text-gray-200"
                 to="/"
@@ -266,7 +267,7 @@ function handleKeyDown(event) {
             </form>
           </div>
         </div>
-        <div className="flex flex-row mt-3 -mx-3 overflow-scroll scroll-hidden">
+        <div className="flex flex-row mt-3 -mx-3 overflow-scroll scroll-hidden md:justify-between">
           {category &&
             category.map((c) => {
               return (

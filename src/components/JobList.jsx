@@ -60,6 +60,7 @@ function JobList({flag}) {
    async function handleWishlist(){
     let profileInfo;
     let profil = localStorage.getItem('ProfileInfo');
+    let username = localStorage.getItem('username');
     console.log('pro: ',profil);
     if(profil == ' '){
       
@@ -74,7 +75,13 @@ function JobList({flag}) {
     if(profileInfo!= " ")
     {
       try {
-        await WishlistDetails(job_id,owner_id,user,1);
+        if(username == null){
+          alert('Please Login')
+        }
+        else{
+          await WishlistDetails(job_id,owner_id,user,1);
+        }
+        
       } catch (error) {
         alert("Removed from wishlist");
         console.log(error);
@@ -268,13 +275,12 @@ function JobList({flag}) {
                     </div>
                     <div className="py-2">
                       <h1 className="ml-8 inline-block bg-gray-700 rounded px-1 py-1 text-lg text-gray-100 font-serif">
-                        {showDataModal.stripend}
-                         per month
+                        {showDataModal.stripend} per month
                       </h1>
                     </div>
                     <div className="flex ml-2 px-1 py-1">
                       <BsBriefcaseFill className="w-5 h-5 place-self-center mr-1" />
-                      <span className="text-lg space-x-2 font-medium text-gray-100 font-serif">
+                      <span className="text-lg space-x-2 font-medium text-gray font-serif">
                         Job Type
                       </span>
                     </div>
@@ -284,11 +290,12 @@ function JobList({flag}) {
                       </span>
                     </div>
                     {showDataModal.tags&&<div className='flex flex-row flex-wrap space-x-2 pt-2'>
+                      <h1 className="text-lg space-x-2 font-medium text-gray font-serif ml-2 px-1">Tags</h1>
 					          {showDataModal.tags&&showDataModal.tags.map((j)=>{
 						      return(
-							    <div className='flex bg-gray-700 rounded'>
+							    <div className='flex bg-gray-700 rounded p-1'>
 								    <HiOutlineClipboardList className='place-self-center'/>
-									    <span className="text-gray-100 font-serif">{j}</span>
+									    <span className="text-gray-100 font-serif place-self-center">{j}</span>
 							    </div>
 						      );
 					      })
