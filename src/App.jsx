@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Category from "./pages/Category";
 import Favourites from "./pages/Favourites";
 import Search from "./pages/Search";
+import SplashScreen from "./components/SplashScreen";
 import { getCategoryDetails } from "./api/GetCategoryDetails";
 import { UserContextProvider } from "./context/UserContextProvider";
 import { ModalContextProvider } from "./context/ModalContextProvider";
@@ -20,11 +21,19 @@ import { ProfileUpdate } from "./api/ProfileUpdate";
 import { recommentationUpdate } from "./api/RecommentationUpdate";
 import AboutUs from "./pages/AboutUs";
 import MeetTheTeam from "./pages/MeetTheTeam";
+
+
 function App() {
   const [modal,setModal]=useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [cat,setCategory]=useState(null);
   const [flag,setFlag]=useState(false);
+  const [showContent, setShowContent] = useState(false);
+
+  const handleAnimationComplete = () => {
+    setShowContent(true);
+  };
+
 
   const handleOptionChange = (option) => {
     if (selectedOptions.includes(option)) {
@@ -66,7 +75,9 @@ function App() {
   },[])
   return(
     <div>  
-      <BrowserRouter>
+      {!showContent ?
+         <SplashScreen onAnimationComplete={handleAnimationComplete} />:
+        <BrowserRouter>
         <UserContextProvider>
           <SearchContextProvider>
             <ModalContextProvider>
@@ -137,7 +148,7 @@ function App() {
             </ModalContextProvider>
           </SearchContextProvider>  
         </UserContextProvider>
-      </BrowserRouter>
+      </BrowserRouter>}
   </div>
   );
 }
