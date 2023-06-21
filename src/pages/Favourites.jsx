@@ -83,6 +83,7 @@ function Favourites() {
         
         profileInfo = ' ';
         alert('Please Update your profile');
+        navigate('/Profile');
       }
       else{
           if(username==null){
