@@ -14,7 +14,12 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ApplyJob } from "../api/AppyJob";
 import * as Yup from "yup";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
+
 function Category() {
+
+  const navigate = useNavigate();
+
   const {category} = useContext(CategoryContext)
   const { showModal, setShowModal } = useContext(ModalContext);
   const {showDataModal,setShowDataModal} = useContext(ModalDataContext);
@@ -87,17 +92,37 @@ function Category() {
       setStipendValue(event.target.value);
     };
     async function onSubmit(values, {setSubmitting, resetForm}) {
-      const username = localStorage.getItem("username");
-      try {
-          await ApplyJob(showDataModal.id,username,values,1);
-          alert("Application Successful");
-          resetForm();
-        } catch (error) {
-          alert("Application failed");
-          console.log(error);
-        } finally {
-          setSubmitting(false);
-        }
+      let profileInfo;
+      let profil = localStorage.getItem('ProfileInfo');
+      let username = localStorage.getItem('username');
+      console.log('pro: ',profil);
+      if(profil == ' '){
+        
+        profileInfo = ' ';
+        alert('Please Update your Profile');
+        navigate('/Profile');
+      }
+      else{
+          if(username==null){
+            alert('Please Login First');
+            
+          }
+          else{
+            profileInfo = JSON.parse(profil);
+            try {
+              await ApplyJob(showDataModal.id,username,values,1);
+              alert("Application Successful");
+              resetForm();
+            } catch (error) {
+              alert("Application failed");
+              console.log(error);
+            } finally {
+              setSubmitting(false);
+            }
+          }
+          
+      }
+        
     }
   return (
     <main

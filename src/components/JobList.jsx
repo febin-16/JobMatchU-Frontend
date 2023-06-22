@@ -76,7 +76,7 @@ function JobList({flag}) {
     {
       try {
         if(username == null){
-          alert('Please Login')
+          alert('Please Login');
         }
         else{
           await WishlistDetails(job_id,owner_id,user,1);
@@ -103,6 +103,7 @@ function JobList({flag}) {
       
       profileInfo = ' ';
       alert('Please Update your Profile');
+      navigate('/Profile');
     }
     else{
         if(username==null){
@@ -124,7 +125,7 @@ function JobList({flag}) {
         
     }
       
-    }
+  }
     
   
 
